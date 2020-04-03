@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Switch, Route } from 'react-router';
 import { GlobalProvider } from './Context/GlobalContext'
 //import logo from './logo.svg';
 import Home from './Components/Home';
@@ -10,9 +10,11 @@ import Pokemon from './Components/Pokemon/Pokemon';
 const App = () => {
   return (
     <GlobalProvider>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/pokemonlist" component={AllPokemon} />
-      <Route path="/pokemon/:id" component={Pokemon} />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/pokemon/list" component={AllPokemon} />
+        <Route path="/pokemon/:id" component={Pokemon} />
+      </Switch>
     </GlobalProvider>
   );
 }

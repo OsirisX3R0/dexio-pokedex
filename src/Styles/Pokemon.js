@@ -26,6 +26,14 @@ export const PokemonName = styled(Link)`
     margin-bottom: 0;
     display: block;
     padding: 1rem;
+
+    &:hover {
+        background-color: #ebebeb;
+    }
+    
+    &:active {
+        background-color: #ddd;
+    }
 `;
 
 export const PokemonNumber = styled.span`
