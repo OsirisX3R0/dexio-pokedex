@@ -11,7 +11,7 @@ const Home = () => {
             <HomeNav>
                 <HomeLinks>
                     <HomeLink>
-                        <HomeLinkButton to="/pokemon">Button</HomeLinkButton>
+                        <HomeLinkButton to="/pokemonlist">Button</HomeLinkButton>
                     </HomeLink>
                     <HomeLink>
                         <HomeLinkButton to="/pokemon">Button</HomeLinkButton>
