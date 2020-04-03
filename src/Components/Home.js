@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeHead, HomeHeading, HomeNav, HomeLinks, HomeLink, HomeLinkButton } from './Styles'
+import { HomeHead, HomeHeading, HomeNav, HomeLinks, HomeLink, HomeLinkButton } from '../Styles/Home'
 
 const Home = () => {
     return (
@@ -11,13 +11,13 @@ const Home = () => {
             <HomeNav>
                 <HomeLinks>
                     <HomeLink>
-                        <HomeLinkButton>Button</HomeLinkButton>
+                        <HomeLinkButton to="/pokemon">Button</HomeLinkButton>
                     </HomeLink>
                     <HomeLink>
-                        <HomeLinkButton>Button</HomeLinkButton>
+                        <HomeLinkButton to="/pokemon">Button</HomeLinkButton>
                     </HomeLink>
                     <HomeLink>
-                        <HomeLinkButton>Button</HomeLinkButton>
+                        <HomeLinkButton to="/pokemon">Button</HomeLinkButton>
                     </HomeLink>
                 </HomeLinks>
             </HomeNav>
