@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-let primaryRed = "#ef5350";
-let primaryRedHover = "#c62828";
-let light = "#f5f5f5";
-let dark = "#333";
+import { primaryRed, primaryRedHover, light } from './Variables';
 
 export const HomeHead = styled.header`
     padding: 2rem;

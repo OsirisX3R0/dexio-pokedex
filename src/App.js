@@ -1,11 +1,10 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
 import { GlobalProvider } from './Context/GlobalContext'
-//import logo from './logo.svg';
 import Home from './Components/Home';
 import AllPokemon from './Components/Pokemon/AllPokemon';
 import Pokemon from './Components/Pokemon/Pokemon';
-//import './App.css';
+import './App.scss';
 
 const App = () => {
   return (

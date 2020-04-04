@@ -6,6 +6,7 @@ export const PokemonList = styled.ul`
 `;
 
 export const PokemonListItem = styled.li`
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     // display: grid;
     // grid-template-columns: 100px 1fr 60px;
     // grid-gap: .25rem;

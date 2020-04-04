@@ -1,7 +1,10 @@
 import React from 'react';
 import { HomeHead, HomeHeading, HomeNav, HomeLinks, HomeLink, HomeLinkButton } from '../Styles/Home'
+import useActivePage from '../Hooks/useActivePage';
 
 const Home = () => {
+    useActivePage('Home');
+
     return (
         <>
             <HomeHead>
@@ -11,7 +14,7 @@ const Home = () => {
             <HomeNav>
                 <HomeLinks>
                     <HomeLink>
-                        <HomeLinkButton to="/pokemon/list">Button</HomeLinkButton>
+                        <HomeLinkButton to="/pokemon/list">Pokedex</HomeLinkButton>
                     </HomeLink>
                     <HomeLink>
                         <HomeLinkButton to="/pokemon">Button</HomeLinkButton>

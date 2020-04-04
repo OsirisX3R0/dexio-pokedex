@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalContext = createContext();
@@ -18,8 +18,12 @@ const GlobalStyles = createGlobalStyle`
 `;
 
 export const GlobalProvider = ({ children }) => {
+    const [activePage, setActivePage] = useState(null);
     return (
-        <GlobalContext.Provider value={{}}>
+        <GlobalContext.Provider value={{
+            activePage, 
+            setActivePage
+        }}>
             <GlobalStyles />
             {children}
         </GlobalContext.Provider>

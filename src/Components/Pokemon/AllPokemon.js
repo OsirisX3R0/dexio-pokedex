@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { PokemonList, PokemonListItem, PokemonListSprite, PokemonInfo, PokemonName, PokemonNumber, PokemonTypes, Type } from '../../Styles/Pokemon';
 import PokemonItem from './PokemonItem';
 import { getAllPokemon } from '../../Services/pokemonService';
+import useActivePage from '../../Hooks/useActivePage';
+import Layout from '../Layout/Layout';
 
 const AllPokemon = () => {
     const [allPokemon, setAllPokemon] = useState([]);
+    useActivePage('Pokemon')
 
     useEffect(() => {
         getAllPokemon()
@@ -22,11 +25,11 @@ const AllPokemon = () => {
     }
 
     return (
-        <>
+        <Layout>
             <PokemonList>
                 {displayPokemonList()}
             </PokemonList>
-        </>
+        </Layout>
     )
 }
 
