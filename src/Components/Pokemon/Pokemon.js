@@ -15,7 +15,7 @@ import {
     PokemonTypes,
     Type} from '../../Styles/Pokemon';
 
-const Pokemon = () => {
+const Pokemon = ({ history }) => {
     let { id } = useParams();
     const [pokemon, setPokemon] = useState(null)
     useActivePage('Pokemon Detail');
@@ -29,7 +29,7 @@ const Pokemon = () => {
     const displayPokemon = () => {
         if (pokemon) {
             return (
-                <Layout>
+                <Layout history={history}>
                     <PokemonDetailHeader>
                         <PokemonSprite src={pokemon.sprites.front_default} />
                         <PokemonDetailInfo>

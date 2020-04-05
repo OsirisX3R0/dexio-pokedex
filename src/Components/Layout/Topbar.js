@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
-import { TopBarContainer, TopBarTitle } from '../../Styles/Layout';
+import { TopBarContainer, BackButton, TopBarTitle } from '../../Styles/Layout';
 import { GlobalContext } from '../../Context/GlobalContext';
 
-const Topbar = () => {
+const Topbar = ({ history }) => {
     const { activePage } = useContext(GlobalContext);
 
     return (
         <TopBarContainer>
-            <TopBarTitle>{activePage}</TopBarTitle>
+            <TopBarTitle>
+                <BackButton onClick={() => history.goBack()}>&lt; {activePage}</BackButton>                
+            </TopBarTitle>
         </TopBarContainer>
     )
 }

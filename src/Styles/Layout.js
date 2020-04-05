@@ -7,6 +7,13 @@ export const TopBarContainer = styled.header`
     padding: .55rem;
 `;
 
+export const BackButton = styled.button`
+    background-color: transparent;
+    color: ${light};
+    border-width: 0;
+    font-weight:500;
+`;
+
 export const TopBarTitle = styled.h3`
     color: ${light};
 `;

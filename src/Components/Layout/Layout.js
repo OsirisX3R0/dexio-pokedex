@@ -1,10 +1,10 @@
 import React from 'react';
 import Topbar from './Topbar';
 
-const Layout = ({ children }) => {
+const Layout = ({ history, children }) => {
     return (
         <>
-            <Topbar />
+            <Topbar history={history} />
             {children}
         </>
     )

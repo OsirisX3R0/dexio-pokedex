@@ -5,7 +5,7 @@ import { getAllPokemon } from '../../Services/pokemonService';
 import useActivePage from '../../Hooks/useActivePage';
 import Layout from '../Layout/Layout';
 
-const AllPokemon = () => {
+const AllPokemon = ({ history }) => {
     const [allPokemon, setAllPokemon] = useState([]);
     useActivePage('Pokemon')
 
@@ -25,7 +25,7 @@ const AllPokemon = () => {
     }
 
     return (
-        <Layout>
+        <Layout history={history}>
             <PokemonList>
                 {displayPokemonList()}
             </PokemonList>
