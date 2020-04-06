@@ -5,6 +5,7 @@ import { Container } from '../../Styles/Layout';
 import { PokemonProvider } from '../../Context/PokemonContext';
 import PokemonDetails from './PokemonDetails';
 import PokemonStats from './PokemonStats';
+import PokemonDamage from './PokemonDamage';
 
 const Pokemon = ({ history }) => {
     useActivePage('Pokemon Detail');
@@ -15,6 +16,7 @@ const Pokemon = ({ history }) => {
                 <Container>
                     <PokemonDetails />
                     <PokemonStats />
+                    <PokemonDamage />
                 </Container>
             </Layout>
         </PokemonProvider>

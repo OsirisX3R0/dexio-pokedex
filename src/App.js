@@ -5,6 +5,7 @@ import Home from './Components/Home';
 import AllPokemon from './Components/Pokemon/AllPokemon';
 import Pokemon from './Components/Pokemon/Pokemon';
 import './App.scss';
+import 'react-block-ui/style.css';
 
 const App = () => {
   return (

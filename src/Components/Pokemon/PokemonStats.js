@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import BlockUi from 'react-block-ui';
+import Loader from 'react-loaders';
 import { PokemonContext } from '../../Context/PokemonContext';
 import {
     Stats,
@@ -8,7 +10,7 @@ import {
 } from '../../Styles/Pokemon'
 
 const PokemonStats = () => {
-    const { pokemon, statTotal } = useContext(PokemonContext);
+    const { pokemon, statTotal, loading } = useContext(PokemonContext);
 
     const getBaseStat = stat => {
         return pokemon.stats
@@ -20,7 +22,8 @@ const PokemonStats = () => {
             return <div></div>
         
         return (
-            <Stats>
+            <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>
+                <Stats>
                     <StatName>HP</StatName>
                     <StatValue>{getBaseStat('hp')}</StatValue>
                     <StatBar statValue={getBaseStat('hp')} statMax="255" pokemonStat="hp" />
@@ -42,6 +45,7 @@ const PokemonStats = () => {
                     <StatName>Total</StatName>
                     <StatValue>{statTotal}</StatValue>
                 </Stats>
+            </BlockUi>
         )
     }
 

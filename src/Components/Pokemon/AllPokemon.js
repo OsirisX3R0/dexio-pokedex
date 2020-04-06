@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import BlockUi from 'react-block-ui';
+import Loader from 'react-loaders';
 import { PokemonList, PokemonListItem, PokemonListSprite, PokemonInfo, PokemonName, PokemonNumber, PokemonTypes, Type } from '../../Styles/Pokemon';
 import PokemonItem from './PokemonItem';
 import { getAllPokemon } from '../../Services/pokemonService';
@@ -7,12 +9,16 @@ import Layout from '../Layout/Layout';
 
 const AllPokemon = ({ history }) => {
     const [allPokemon, setAllPokemon] = useState([]);
+    const [loading, setLoading] = useState(true);
     useActivePage('Pokemon')
 
     useEffect(() => {
         getAllPokemon()
             .then(res => {
-                setAllPokemon(res.data.results)
+                setAllPokemon(res.data.results);
+            })
+            .finally(() => {
+                setLoading(false);
             });
     }, [])
 
@@ -26,9 +32,11 @@ const AllPokemon = ({ history }) => {
 
     return (
         <Layout history={history}>
-            <PokemonList>
-                {displayPokemonList()}
-            </PokemonList>
+            <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>
+                <PokemonList>
+                    {displayPokemonList()}
+                </PokemonList>
+            </BlockUi>
         </Layout>
     )
 }
