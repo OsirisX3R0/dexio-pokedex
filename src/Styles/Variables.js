@@ -1,6 +1,7 @@
 export const primaryRed = "#ef5350";
 export const primaryRedHover = "#c62828";
 export const light = "#f5f5f5";
+export const lightGray = "#eee";
 export const dark = "#333";
 export const gray = "#aaa";
 
@@ -23,4 +24,13 @@ export const typeColors = [
     { name: "dragon", color: "#7038F8"},
     { name: "steel", color: "#B8B8D0"},
     { name: "fairy", color: "#EE99AC"},
+];
+
+export const statColors = [
+    {name: "hp", color: "#FF0000", border: "#A60000"},
+    {name: "attack", color: "#F08030", border: "#9C531F"},
+    {name: "defense", color: "#F8D030", border: "#A1871F"},
+    {name: "special-attack", color: "#6890F0", border: "#445E9C"},
+    {name: "special-defense", color: "#78C850", border: "#4E8234"},
+    {name: "speed", color: "#F85888", border: "#A13959"},
 ]

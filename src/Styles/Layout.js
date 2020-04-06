@@ -17,3 +17,7 @@ export const BackButton = styled.button`
 export const TopBarTitle = styled.h3`
     color: ${light};
 `;
+
+export const Container = styled.div`
+    padding: 1rem;
+`;

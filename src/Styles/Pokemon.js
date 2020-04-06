@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { gray, dark, light, typeColors } from './Variables';
+import { gray, dark, light, typeColors, statColors } from './Variables';
 
 export const PokemonList = styled.ul`
     list-style-type: none;
@@ -38,10 +38,11 @@ export const PokemonNumber = styled.span`
 `;
 
 export const PokemonDetailHeader = styled.div`
-    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 1rem;
     display: grid;
     grid-template-columns: 96px 1fr;
-    grid-gap: .5rem;
+    grid-gap: 1rem;
 `;
 
 export const PokemonSprite = styled.img`
@@ -90,6 +91,29 @@ export const Type = styled.span`
     display: inline-block;
 `;
 
+export const Stats = styled.div`
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 81px 24px 1fr;
+    grid-gap: .25rem;
+`;
+
+export const StatName = styled.div`
+    font-weight: bold;
+`;
+
+export const StatValue = styled.div`
+
+`;
+
+export const StatBar = styled.div`
+    width: calc(100% * ${props => (props.statValue / props.statMax)});
+    background-color: ${props => (getStatColor(props.pokemonStat))};
+    border: 1px solid ${props => (getStatBorderColor(props.pokemonStat))};
+`;
+
 const getTypeColor = type => {
     //debugger;
     if (!type) {
@@ -97,4 +121,22 @@ const getTypeColor = type => {
     }
     let pokemonType = typeColors.filter(t => t.name === type)[0];
     return pokemonType.color;
+}
+
+const getStatColor = stat => {
+    if (!stat) {
+        return "#bbb";
+    }
+
+    let pokemonStat = statColors.filter(s => s.name === stat)[0];
+    return pokemonStat.color;
+}
+
+const getStatBorderColor = stat => {
+    if (!stat) {
+        return "#bbb";
+    }
+
+    let pokemonStat = statColors.filter(s => s.name === stat)[0];
+    return pokemonStat.border;
 }
