@@ -51,10 +51,12 @@ const PokemonDetails = () => {
                             ))}
                         </PokemonDetailAbilityList>
                         <PokemonTypes>
-                            {pokemon.types.map((type, typeIndex) => (
-                                <Type key={typeIndex} pokemonType={type.type.name}>
-                                    {type.type.name}
-                                </Type>
+                            {pokemon.types
+                                .sort((a, b) => (a.color > b.color) ? 1 : -1)
+                                .map((type, typeIndex) => (
+                                    <Type key={typeIndex} pokemonType={type.type.name}>
+                                        {type.type.name}
+                                    </Type>
                             ))}
                         </PokemonTypes>
                     </PokemonDetailInfo>

@@ -25,7 +25,7 @@ const AllPokemon = ({ history }) => {
     const displayPokemonList = () => {
         if (allPokemon && allPokemon.length > 0) {
             return allPokemon.map((pokemon, pokemonIndex) => {
-                 return <PokemonItem pokemon={pokemon} key={pokemonIndex} />
+                 return <PokemonItem name={pokemon.name} key={pokemonIndex} />
             })
         }
     }

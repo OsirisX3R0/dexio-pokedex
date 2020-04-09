@@ -13,7 +13,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/pokemon/list" component={AllPokemon} />
-        <Route path="/pokemon/:id" component={Pokemon} />
+        <Route path="/pokemon/:name" component={Pokemon} />
       </Switch>
     </GlobalProvider>
   );

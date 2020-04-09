@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { PokemonListItem, PokemonName } from '../../Styles/Pokemon';
 
-const PokemonItem = ({ pokemon }) => {
-    const splitUrl = pokemon.url
-        .split("/")
-        .filter(i => i !== "");
-    const [id] = useState(splitUrl[splitUrl.length - 1])
+const PokemonItem = ({ name }) => {
     return (
         <PokemonListItem>
-            <PokemonName to={"/pokemon/" + id}>{pokemon.name}</PokemonName>
+            <PokemonName to={"/pokemon/" + name}>{name}</PokemonName>
         </PokemonListItem>
     )
 }
