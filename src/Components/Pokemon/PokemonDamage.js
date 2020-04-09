@@ -4,7 +4,7 @@ import Loader from 'react-loaders';
 import { PokemonContext } from '../../Context/PokemonContext';
 
 const PokemonDamage = () => {
-    const { pokemon, loading } = useContext(PokemonContext);
+    const { loading } = useContext(PokemonContext);
 
     return (
         <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>

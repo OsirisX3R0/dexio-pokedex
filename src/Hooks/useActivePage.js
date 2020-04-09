@@ -7,7 +7,7 @@ const useActivePage = page => {
 
     useEffect(() => {
         setActivePage(page)
-    }, [])
+    }, [page, setActivePage])
 }
 
 export default useActivePage;

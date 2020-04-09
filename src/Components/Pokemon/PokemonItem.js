@@ -4,7 +4,7 @@ import { PokemonListItem, PokemonName } from '../../Styles/Pokemon';
 const PokemonItem = ({ pokemon }) => {
     const splitUrl = pokemon.url
         .split("/")
-        .filter(i => i != "");
+        .filter(i => i !== "");
     const [id] = useState(splitUrl[splitUrl.length - 1])
     return (
         <PokemonListItem>

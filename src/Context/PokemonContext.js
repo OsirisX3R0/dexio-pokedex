@@ -19,7 +19,7 @@ export const PokemonProvider = ({ children }) => {
                     .reduce((total, next) => total + next))
             })
             .finally(() => setLoading(false))
-    }, [])
+    }, [id])
 
     return (
         <PokemonContext.Provider value={{

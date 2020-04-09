@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import useActivePage from '../../Hooks/useActivePage';
 import Layout from '../Layout/Layout';
 import { Container } from '../../Styles/Layout';
