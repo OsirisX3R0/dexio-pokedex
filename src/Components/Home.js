@@ -16,12 +16,12 @@ const Home = () => {
                     <HomeLink>
                         <HomeLinkButton to="/pokemon/list">Pokedex</HomeLinkButton>
                     </HomeLink>
-                    <HomeLink>
+                    {/* <HomeLink>
                         <HomeLinkButton to="/pokemon">Button</HomeLinkButton>
                     </HomeLink>
                     <HomeLink>
                         <HomeLinkButton to="/pokemon">Button</HomeLinkButton>
-                    </HomeLink>
+                    </HomeLink> */}
                 </HomeLinks>
             </HomeNav>
         </>
