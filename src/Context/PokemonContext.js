@@ -1,4 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
+import BlockUi from 'react-block-ui';
+import Loader from 'react-loaders';
 import { useParams } from 'react-router';
 import { getPokemon } from '../Services/pokemonService';
 import { getType } from '../Services/typeService';
@@ -10,7 +12,7 @@ export const PokemonProvider = ({ children }) => {
     const [pokemon, setPokemon] = useState(null);
     const [statTotal, setStatTotal] = useState(null);
     const [types, setTypes] = useState([]);
-    const [relations, setRelations] = useState({});
+    const [relations, setRelations] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -29,7 +31,6 @@ export const PokemonProvider = ({ children }) => {
         let promises = [];
 
         if (pokemon) {
-            //debugger;
             pokemon.types.forEach(type => {
                 promises = [...promises, getType(type.type.name)]
             })            
@@ -59,15 +60,7 @@ export const PokemonProvider = ({ children }) => {
                 no_damage_to: [...typeRelations[0].damage_relations.no_damage_to, ...typeRelations[1].damage_relations.no_damage_to],
             };
 
-            //let weakTo = ;
-
             setRelations({
-                // strongAgainst: fullRelations.double_damage_to.map(type => {
-                //     return {
-                //         name: type.name,
-                //         power: fullRelations.double_damage_to.filter(r => r.name === type.name).length * 2
-                //     }
-                // }),
                 weakTo: fullRelations.double_damage_from
                     .map(type => {
                         return {
@@ -77,29 +70,33 @@ export const PokemonProvider = ({ children }) => {
                     })
                     .filter((type, index, self) => 
                         index === self.findIndex((t) => (
-                            t.name === type.name && t.power === type.power
+                            (t.name === type.name && t.power === type.power) ||
+                            (
+                                fullRelations.half_damage_from.some(r => r.name === type.name) ||
+                                fullRelations.no_damage_from.some(r => r.name === type.name)
+                            )
                         ))
-                    ),
+                    )
+                    .sort((a, b) => (a.power > b.power) ? 1 : -1),
                 resistantTo: fullRelations.half_damage_from
                     .map(type => {
                         return {
                             name: type.name,
                             power: fullRelations.half_damage_from.filter(r => r.name === type.name).length === 1
-                                ? "1/2"
-                                : "1/4"
+                                ? 0.5
+                                : 0.25
                         }
                     })
                     .filter((type, index, self) => 
                         index === self.findIndex((t) => (
-                            t.name === type.name && t.power === type.power
+                            (t.name === type.name && t.power === type.power) ||
+                            (
+                                fullRelations.double_damage_from.some(r => r.name === type.name) ||
+                                fullRelations.no_damage_from.some(r => r.name === type.name)
+                            )
                         ))
-                    ),
-                // weakAgainst: fullRelations.half_damage_to.map(type => {
-                //     return {
-                //         name: type.name,
-                //         power: fullRelations.half_damage_to.filter(r => r.name === type.name).length / 2
-                //     }
-                // }),
+                    )
+                    .sort((a, b) => (a.power < b.power) ? 1 : -1),
                 immuneTo: fullRelations.no_damage_from
                     .map(type => {
                         return {
@@ -112,6 +109,7 @@ export const PokemonProvider = ({ children }) => {
                             t.name === type.name && t.power === type.power
                         ))
                     )
+                    .sort((a, b) => (a.power > b.power) ? 1 : -1)
             })
         }
     }
@@ -124,7 +122,9 @@ export const PokemonProvider = ({ children }) => {
             relations,
             loading
         }}>
-            {children}
+            <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>
+                {children}
+            </BlockUi>
         </PokemonContext.Provider>
     )
 }

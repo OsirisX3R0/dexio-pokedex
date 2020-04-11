@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { gray, dark, light, typeColors, statColors } from './Variables';
+import { gray, dark, light } from './Variables';
+import { getTypeColor, getStatColor, getStatBorderColor } from '../Util/colorHelpers';
 
 export const PokemonList = styled.ul`
     list-style-type: none;
@@ -8,9 +9,6 @@ export const PokemonList = styled.ul`
 
 export const PokemonListItem = styled.li`
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    // display: grid;
-    // grid-template-columns: 100px 1fr 60px;
-    // grid-gap: .25rem;
 `;
 
 export const PokemonInfo = styled.div``;
@@ -86,6 +84,7 @@ export const Type = styled.span`
     background-color: ${props => getTypeColor(props.pokemonType)};
     font-size: .75rem;
     border-radius: 1rem;
+    text-transform: capitalize;
     margin-right: .25rem;
     padding: .35rem .5rem;
     display: inline-block;
@@ -114,29 +113,39 @@ export const StatBar = styled.div`
     border: 1px solid ${props => (getStatBorderColor(props.pokemonStat))};
 `;
 
-const getTypeColor = type => {
-    //debugger;
-    if (!type) {
-        return "#bbb";
-    }
-    let pokemonType = typeColors.filter(t => t.name === type)[0];
-    return pokemonType.color;
-}
+export const DamageTable = styled.div`
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    align-items: center;
+    grid-gap: 1rem;
+`;
 
-const getStatColor = stat => {
-    if (!stat) {
-        return "#bbb";
-    }
+export const DamageTableTitle = styled.div`
+    font-weight: bold;
+    padding: .5rem;
+`;
 
-    let pokemonStat = statColors.filter(s => s.name === stat)[0];
-    return pokemonStat.color;
-}
+export const DamageTableTypes = styled.div`
+    padding: 0 .5rem;
+`;
 
-const getStatBorderColor = stat => {
-    if (!stat) {
-        return "#bbb";
-    }
+export const DamageTableType = styled(Type)`
+    margin-bottom: .25rem;
+    padding: .35rem .35rem;
+    display: inline-grid;
+    grid-auto-flow: column;
+    grid-gap: .25rem;
+    justify-content: space-between;
+    align-items: center;
+`;
 
-    let pokemonStat = statColors.filter(s => s.name === stat)[0];
-    return pokemonStat.border;
-}
+export const DamageTablePower = styled.span`
+    background-color: ${light};
+    color: ${dark};
+    font-size: .5rem;
+    border-radius: 50%;
+    padding: .25rem;
+`;
