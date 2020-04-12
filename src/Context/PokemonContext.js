@@ -17,20 +17,21 @@ export const PokemonProvider = ({ children }) => {
 
     const getDamageRelations = useCallback(typeRelations => {
         if (types) {
-            if (typeRelations.length === 1)
-                return typeRelations[0].damage_relations;
-
-            let fullRelations = {};
-
             if (typeRelations.length > 0) {
-                fullRelations = {
-                    double_damage_from: [...typeRelations[0].damage_relations.double_damage_from, ...typeRelations[1].damage_relations.double_damage_from],
-                    double_damage_to: [...typeRelations[0].damage_relations.double_damage_to, ...typeRelations[1].damage_relations.double_damage_to],
-                    half_damage_from: [...typeRelations[0].damage_relations.half_damage_from, ...typeRelations[1].damage_relations.half_damage_from],
-                    half_damage_to: [...typeRelations[0].damage_relations.half_damage_to, ...typeRelations[1].damage_relations.half_damage_to],
-                    no_damage_from: [...typeRelations[0].damage_relations.no_damage_from, ...typeRelations[1].damage_relations.no_damage_from],
-                    no_damage_to: [...typeRelations[0].damage_relations.no_damage_to, ...typeRelations[1].damage_relations.no_damage_to],
-                };
+                let fullRelations = {};
+    
+                if (typeRelations.length === 1) {
+                    fullRelations = typeRelations[0].damage_relations;
+                } else {
+                    fullRelations = {
+                        double_damage_from: [...typeRelations[0].damage_relations.double_damage_from, ...typeRelations[1].damage_relations.double_damage_from],
+                        double_damage_to: [...typeRelations[0].damage_relations.double_damage_to, ...typeRelations[1].damage_relations.double_damage_to],
+                        half_damage_from: [...typeRelations[0].damage_relations.half_damage_from, ...typeRelations[1].damage_relations.half_damage_from],
+                        half_damage_to: [...typeRelations[0].damage_relations.half_damage_to, ...typeRelations[1].damage_relations.half_damage_to],
+                        no_damage_from: [...typeRelations[0].damage_relations.no_damage_from, ...typeRelations[1].damage_relations.no_damage_from],
+                        no_damage_to: [...typeRelations[0].damage_relations.no_damage_to, ...typeRelations[1].damage_relations.no_damage_to],
+                    }
+                }
 
                 let weakTo = fullRelations.double_damage_from
                     .map(type => {
@@ -103,10 +104,10 @@ export const PokemonProvider = ({ children }) => {
                         ))
 
                 setRelations({
-                    weakTo: weakTo,
-                    resistantTo: resistantTo,
-                    immuneTo: immuneTo,
-                    normallyDamaged: normallyDamaged
+                    weakTo,
+                    resistantTo,
+                    immuneTo,
+                    normallyDamaged
                 })
             }
         }
