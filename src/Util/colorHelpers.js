@@ -2,7 +2,7 @@ import { typeColors, statColors } from '../Styles/Variables';
 export const getTypeColor = type => {
     //debugger;
     if (!type) {
-        return "#bbb";
+        return "#000";
     }
     let pokemonType = typeColors.filter(t => t.name === type)[0];
     return pokemonType.color;

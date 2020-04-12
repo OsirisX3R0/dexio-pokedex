@@ -4,6 +4,26 @@ import { DamageTable, DamageTableTitle, DamageTableTypes, DamageTableType, Damag
 
 const PokemonDamage = () => {
     const { relations } = useContext(PokemonContext);
+
+    const displaySection = section => {
+        if(section.length === 0)
+            return <DamageTableType>None</DamageTableType>
+
+        return section.map((type, index) => (
+            <DamageTableType pokemonType={type.name} key={index}>
+                {type.name}
+                <DamageTablePower>{displayPower(type.power)}x</DamageTablePower>
+            </DamageTableType>
+        ))
+    }
+
+    const displayPower = power => {
+        return power === 0.5 
+                ? String.fromCharCode(189) 
+                : power === 0.25
+                    ? String.fromCharCode(188)
+                    : power;
+    }
     
     const displayDamage = () => {
         if (relations) {
@@ -11,39 +31,19 @@ const PokemonDamage = () => {
                 <DamageTable>
                     <DamageTableTitle>Weak To</DamageTableTitle>
                     <DamageTableTypes>
-                        {relations.weakTo.map((type, index) => (
-                            <DamageTableType pokemonType={type.name} key={index}>
-                                {type.name}
-                                <DamageTablePower>{type.power}x</DamageTablePower>
-                            </DamageTableType>
-                        ))}
+                        {displaySection(relations.weakTo)}
                     </DamageTableTypes>
                     <DamageTableTitle>Resistant To</DamageTableTitle>
                     <DamageTableTypes>
-                        {relations.resistantTo.map((type, index) => (
-                            <DamageTableType pokemonType={type.name} key={index}>
-                                {type.name}
-                                <DamageTablePower>{type.power === 0.5 ? String.fromCharCode(189) : String.fromCharCode(188)}x</DamageTablePower>
-                            </DamageTableType>
-                        ))}
+                        {displaySection(relations.resistantTo)}
                     </DamageTableTypes>
                     <DamageTableTitle>Immune To</DamageTableTitle>
                     <DamageTableTypes>
-                        {relations.immuneTo.map((type, index) => (
-                            <DamageTableType pokemonType={type.name} key={index}>
-                                {type.name}
-                                <DamageTablePower>{type.power}x</DamageTablePower>
-                            </DamageTableType>
-                        ))}
+                        {displaySection(relations.immuneTo)}
                     </DamageTableTypes>
                     <DamageTableTitle>Damaged Normally by</DamageTableTitle>
                     <DamageTableTypes>
-                        {relations.normallyDamaged.map((type, index) => (
-                            <DamageTableType pokemonType={type.name} key={index}>
-                                {type.name}
-                                <DamageTablePower>{type.power}x</DamageTablePower>
-                            </DamageTableType>
-                        ))}
+                        {displaySection(relations.normallyDamaged)}
                     </DamageTableTypes>
                 </DamageTable>
             )
