@@ -1,9 +1,9 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState, useEffect, useCallback } from 'react';
 import BlockUi from 'react-block-ui';
 import Loader from 'react-loaders';
 import { useParams } from 'react-router';
 import { getPokemon } from '../Services/pokemonService';
-import { getType } from '../Services/typeService';
+import { getAllTypes, getType } from '../Services/typeService';
 
 export const PokemonContext = createContext();
 
@@ -11,57 +11,28 @@ export const PokemonProvider = ({ children }) => {
     let { name } = useParams();
     const [pokemon, setPokemon] = useState(null);
     const [statTotal, setStatTotal] = useState(null);
-    const [types, setTypes] = useState([]);
+    const [types, setTypes] = useState(null);
     const [relations, setRelations] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);    
 
-    useEffect(() => {
-        getPokemon(name)
-            .then(res => {
-                setPokemon(res.data);
-                setStatTotal(res.data.stats
-                    .map(s => s.base_stat)
-                    .reduce((total, next) => total + next))
-            })
-            .finally(() => setLoading(false))
-        
-    }, [name])
+    const getDamageRelations = useCallback(typeRelations => {
+        if (types) {
+            if (typeRelations.length === 1)
+                return typeRelations[0].damage_relations;
 
-    useEffect(() => {
-        let promises = [];
+            let fullRelations = {};
 
-        if (pokemon) {
-            pokemon.types.forEach(type => {
-                promises = [...promises, getType(type.type.name)]
-            })            
+            if (typeRelations.length > 0) {
+                fullRelations = {
+                    double_damage_from: [...typeRelations[0].damage_relations.double_damage_from, ...typeRelations[1].damage_relations.double_damage_from],
+                    double_damage_to: [...typeRelations[0].damage_relations.double_damage_to, ...typeRelations[1].damage_relations.double_damage_to],
+                    half_damage_from: [...typeRelations[0].damage_relations.half_damage_from, ...typeRelations[1].damage_relations.half_damage_from],
+                    half_damage_to: [...typeRelations[0].damage_relations.half_damage_to, ...typeRelations[1].damage_relations.half_damage_to],
+                    no_damage_from: [...typeRelations[0].damage_relations.no_damage_from, ...typeRelations[1].damage_relations.no_damage_from],
+                    no_damage_to: [...typeRelations[0].damage_relations.no_damage_to, ...typeRelations[1].damage_relations.no_damage_to],
+                };
 
-            Promise.all(promises)
-                .then(res => {
-                    let typesArr = res.map(t => t.data);
-                    setTypes(typesArr);
-                    getDamageRelations(typesArr);
-                })
-        }
-    }, [pokemon])
-
-    const getDamageRelations = typeRelations => {
-        if (typeRelations.length === 1)
-            return typeRelations[0].damage_relations;
-
-        let fullRelations = {};
-
-        if (typeRelations.length > 0) {
-            fullRelations = {
-                double_damage_from: [...typeRelations[0].damage_relations.double_damage_from, ...typeRelations[1].damage_relations.double_damage_from],
-                double_damage_to: [...typeRelations[0].damage_relations.double_damage_to, ...typeRelations[1].damage_relations.double_damage_to],
-                half_damage_from: [...typeRelations[0].damage_relations.half_damage_from, ...typeRelations[1].damage_relations.half_damage_from],
-                half_damage_to: [...typeRelations[0].damage_relations.half_damage_to, ...typeRelations[1].damage_relations.half_damage_to],
-                no_damage_from: [...typeRelations[0].damage_relations.no_damage_from, ...typeRelations[1].damage_relations.no_damage_from],
-                no_damage_to: [...typeRelations[0].damage_relations.no_damage_to, ...typeRelations[1].damage_relations.no_damage_to],
-            };
-
-            setRelations({
-                weakTo: fullRelations.double_damage_from
+                let weakTo = fullRelations.double_damage_from
                     .map(type => {
                         return {
                             name: type.name,
@@ -77,8 +48,9 @@ export const PokemonProvider = ({ children }) => {
                             )
                         ))
                     )
-                    .sort((a, b) => (a.power > b.power) ? 1 : -1),
-                resistantTo: fullRelations.half_damage_from
+                    .sort((a, b) => (a.power > b.power) ? 1 : -1)
+
+                let resistantTo = fullRelations.half_damage_from
                     .map(type => {
                         return {
                             name: type.name,
@@ -96,8 +68,9 @@ export const PokemonProvider = ({ children }) => {
                             )
                         ))
                     )
-                    .sort((a, b) => (a.power < b.power) ? 1 : -1),
-                immuneTo: fullRelations.no_damage_from
+                    .sort((a, b) => (a.power < b.power) ? 1 : -1)
+
+                let immuneTo = fullRelations.no_damage_from
                     .map(type => {
                         return {
                             name: type.name,
@@ -108,11 +81,65 @@ export const PokemonProvider = ({ children }) => {
                         index === self.findIndex((t) => (
                             t.name === type.name && t.power === type.power
                         ))
-                    )
-                    .sort((a, b) => (a.power > b.power) ? 1 : -1)
-            })
+                    );
+
+                let normallyDamaged = types
+                    .map(type => {
+                        return {
+                            name: type,
+                            power: 1
+                        }
+                    })
+                    .filter(t => 
+                        (
+                            fullRelations.double_damage_from.some(r => r.name === t.name) && 
+                            fullRelations.half_damage_from.some(r => r.name === t.name)
+                        ) ||
+                        !(
+                            (t.name === 'unknown' || t.name === 'shadow') ||                        
+                            fullRelations.double_damage_from.some(r => r.name === t.name) ||
+                            fullRelations.half_damage_from.some(r => r.name === t.name) ||
+                            fullRelations.no_damage_from.some(r => r.name === t.name)
+                        ))
+
+                setRelations({
+                    weakTo: weakTo,
+                    resistantTo: resistantTo,
+                    immuneTo: immuneTo,
+                    normallyDamaged: normallyDamaged
+                })
+            }
         }
-    }
+    }, [types])
+
+    useEffect(() => {
+        getPokemon(name)
+            .then(res => {
+                setPokemon(res.data);
+                setStatTotal(res.data.stats
+                    .map(s => s.base_stat)
+                    .reduce((total, next) => total + next))
+            })
+            .finally(() => setLoading(false))
+        
+    }, [name])
+
+    useEffect(() => {
+        let promises = [getAllTypes()];
+
+        if (pokemon) {
+            pokemon.types.forEach(type => {
+                promises = [...promises, getType(type.type.name)]
+            })            
+
+            Promise.all(promises)
+                .then(res => {
+                    setTypes(res[0].data.results.map(t => t.name));
+                    let typesArr = res.filter(t => t.data.damage_relations).map(t => t.data);
+                    getDamageRelations(typesArr);
+                })
+        }
+    }, [pokemon, getDamageRelations])
 
     return (
         <PokemonContext.Provider value={{
@@ -128,7 +155,3 @@ export const PokemonProvider = ({ children }) => {
         </PokemonContext.Provider>
     )
 }
-
-const isNormal = r => r.name === "normal";
-
-const isFighting = r => r.name === "fighting";

@@ -14,7 +14,7 @@ import {
 } from '../../Styles/Pokemon';
 
 const PokemonDetails = () => {
-    const { pokemon, loading } = useContext(PokemonContext);
+    const { pokemon } = useContext(PokemonContext);
 
     const displayDetails = () => {
         if (!pokemon)

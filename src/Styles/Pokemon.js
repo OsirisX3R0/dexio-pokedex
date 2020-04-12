@@ -120,7 +120,7 @@ export const DamageTable = styled.div`
     display: grid;
     grid-template-columns: 100px 1fr;
     align-items: center;
-    grid-gap: 1rem;
+    grid-gap: .5rem;
 `;
 
 export const DamageTableTitle = styled.div`
@@ -143,9 +143,12 @@ export const DamageTableType = styled(Type)`
 `;
 
 export const DamageTablePower = styled.span`
+    width: 13px;
+    height: 13px;
     background-color: ${light};
     color: ${dark};
     font-size: .5rem;
     border-radius: 50%;
-    padding: .25rem;
+    text-transform: none;
+    padding: .1rem;
 `;
