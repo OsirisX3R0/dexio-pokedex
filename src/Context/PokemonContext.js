@@ -104,7 +104,16 @@ export const PokemonProvider = ({ children }) => {
                         ))
 
                 setRelations({
-                    weakTo,
+                    weakTo: weakTo
+                        .filter((type, index, self) => 
+                            index === self.findIndex((t) => (
+                                (t.name === type.name && t.power === type.power) ||
+                                (
+                                    fullRelations.half_damage_from.some(r => r.name === type.name) ||
+                                    fullRelations.no_damage_from.some(r => r.name === type.name)
+                                )
+                            ))
+                        ),
                     resistantTo,
                     immuneTo,
                     normallyDamaged
@@ -135,12 +144,14 @@ export const PokemonProvider = ({ children }) => {
 
             Promise.all(promises)
                 .then(res => {
-                    setTypes(res[0].data.results.map(t => t.name));
+                    if (!types)
+                        setTypes(res[0].data.results.map(t => t.name));
+                        
                     let typesArr = res.filter(t => t.data.damage_relations).map(t => t.data);
                     getDamageRelations(typesArr);
                 })
         }
-    }, [pokemon, getDamageRelations])
+    }, [pokemon, types, getDamageRelations])
 
     return (
         <PokemonContext.Provider value={{

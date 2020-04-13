@@ -4,6 +4,7 @@ import {
     Stats,
     StatName,
     StatValue,
+    StatTotal,
     StatBar
 } from '../../Styles/Pokemon'
 
@@ -40,7 +41,7 @@ const PokemonStats = () => {
                 <StatValue>{getBaseStat('speed')}</StatValue>
                 <StatBar statValue={getBaseStat('speed')} statMax="255" pokemonStat="speed" />
                 <StatName>Total</StatName>
-                <StatValue>{statTotal}</StatValue>
+                <StatTotal>{statTotal}</StatTotal>
             </Stats>
         )
     }

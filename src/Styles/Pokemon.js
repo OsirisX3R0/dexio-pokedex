@@ -107,6 +107,11 @@ export const StatValue = styled.div`
 
 `;
 
+export const StatTotal = styled.div`
+    font-weight: bold;
+    font-style: italic;
+`;
+
 export const StatBar = styled.div`
     width: calc(100% * ${props => (props.statValue / props.statMax)});
     background-color: ${props => (getStatColor(props.pokemonStat))};
