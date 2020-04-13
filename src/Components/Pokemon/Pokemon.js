@@ -6,6 +6,7 @@ import { PokemonProvider } from '../../Context/PokemonContext';
 import PokemonDetails from './PokemonDetails';
 import PokemonStats from './PokemonStats';
 import PokemonDamage from './PokemonDamage';
+import PokemonMoves from './PokemonMoves';
 
 const Pokemon = ({ history }) => {
     useActivePage('Pokemon Detail');
@@ -17,6 +18,7 @@ const Pokemon = ({ history }) => {
                     <PokemonDetails />
                     <PokemonStats />
                     <PokemonDamage />
+                    <PokemonMoves />
                 </Container>
             </Layout>
         </PokemonProvider>
