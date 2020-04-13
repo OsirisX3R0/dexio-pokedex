@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { gray, dark, light } from './Variables';
-import { getTypeColor, getStatColor, getStatBorderColor } from '../Util/colorHelpers';
+import { getTypeColor, getStatColor, getStatBorderColor, getClassBackgroundColor, getClassTextColor } from '../Util/colorHelpers';
 
 export const PokemonList = styled.ul`
     list-style-type: none;
@@ -156,4 +156,51 @@ export const DamageTablePower = styled.span`
     border-radius: 50%;
     text-transform: none;
     padding: .1rem;
+`;
+
+export const MoveTable = styled.table`
+    width: 100%;
+    border-collapse: collapse;
+`;
+
+export const MoveTableHead = styled.thead`
+
+`;
+
+export const MoveTableRow = styled.tr`
+
+`;
+
+export const MoveTableTitle = styled.th`
+    border-bottom: 2px solid ${gray};
+    text-align: left;
+`;
+
+export const MoveTableBody = styled.tbody`
+
+`;
+
+export const MoveTableCell = styled.td`
+    border-bottom: 1px solid ${gray};
+    text-align: center;
+    text-transform: capitalize;
+`;
+
+export const MoveTableName = styled(MoveTableCell)`
+    font-weight: ${props => (
+        props.types.some(type => type === props.type) && props.typeClass !== "status"
+            ? 'bold'
+            : 'normal'
+    )};
+    text-align: left;
+`;
+
+export const MoveTableType = styled(MoveTableCell)`
+    background-color: ${props => (getTypeColor(props.type))};
+    color: ${light};
+`;
+
+export const MoveTableClass = styled(MoveTableCell)`
+    background-color: ${props => (getClassBackgroundColor(props.typeClass))};
+    color: ${props => (getClassTextColor(props.typeClass))};
 `;

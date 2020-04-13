@@ -20,10 +20,13 @@ const GlobalStyles = createGlobalStyle`
 
 export const GlobalProvider = ({ children }) => {
     const [activePage, setActivePage] = useState(null);
+    const [genFilter, setGenFilter] = useState("ultra-sun-ultra-moon");
     return (
         <GlobalContext.Provider value={{
             activePage, 
-            setActivePage
+            setActivePage,
+            genFilter, 
+            setGenFilter
         }}>
             <GlobalStyles />
             {children}

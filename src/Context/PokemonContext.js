@@ -4,6 +4,7 @@ import Loader from 'react-loaders';
 import { useParams } from 'react-router';
 import { getPokemon } from '../Services/pokemonService';
 import { getAllTypes, getType } from '../Services/typeService';
+import { getMove } from '../Services/moveService';
 
 export const PokemonContext = createContext();
 
@@ -140,13 +141,17 @@ export const PokemonProvider = ({ children }) => {
         if (pokemon) {
             pokemon.types.forEach(type => {
                 promises = [...promises, getType(type.type.name)]
-            })            
+            })
+
+            pokemon.moves.forEach(move => {
+                promises = [...promises, getMove(move.move.name)]
+            })
 
             Promise.all(promises)
                 .then(res => {
                     if (!types)
                         setTypes(res[0].data.results.map(t => t.name));
-                        
+
                     let typesArr = res.filter(t => t.data.damage_relations).map(t => t.data);
                     getDamageRelations(typesArr);
                 })

@@ -34,3 +34,9 @@ export const statColors = [
     {name: "special-defense", color: "#78C850", border: "#4E8234"},
     {name: "speed", color: "#F85888", border: "#A13959"},
 ]
+
+export const classColors = [
+    { name: "physical", bg: "#C92112", text: "#F67A1A" },
+    { name: "special", bg: "#4F5870", text: light },
+    { name: "status", bg: "#8C888C", text: light },
+]
