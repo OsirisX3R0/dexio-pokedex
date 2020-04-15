@@ -1,35 +1,15 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { gray, dark, light } from './Variables';
 import { getTypeColor, getStatColor, getStatBorderColor, getClassBackgroundColor, getClassTextColor } from '../Util/colorHelpers';
+import { List, ListItem, ListName } from './General';
 
-export const PokemonList = styled.ul`
-    list-style-type: none;
-`;
+export const PokemonList = styled(List)``;
 
-export const PokemonListItem = styled.li`
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-`;
+export const PokemonListItem = styled(ListItem)``;
 
 export const PokemonInfo = styled.div``;
 
-export const PokemonName = styled(Link)`
-    color: #333;
-    font-weight: 400;
-    text-decoration: none;
-    text-transform: capitalize;
-    margin-bottom: 0;
-    display: block;
-    padding: 1rem;
-
-    &:hover {
-        background-color: #ebebeb;
-    }
-    
-    &:active {
-        background-color: #ddd;
-    }
-`;
+export const PokemonName = styled(ListName)``;
 
 export const PokemonNumber = styled.span`
     font-style: italic;

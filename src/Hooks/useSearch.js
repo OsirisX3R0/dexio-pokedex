@@ -23,7 +23,7 @@ const useSearch = (query, collection, property) => {
         search();
     }, [query, search])
 
-    return [results, search];
+    return results;
 }
 
 export default useSearch;

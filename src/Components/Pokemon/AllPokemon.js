@@ -12,7 +12,7 @@ import useSearch from '../../Hooks/useSearch';
 const AllPokemon = ({ history }) => {
     const [allPokemon, setAllPokemon] = useState([]);
     const [query, setQuery] = useState('');
-    const [results, search] = useSearch(query, allPokemon, "name");
+    const results = useSearch(query, allPokemon, "name");
     const [loading, setLoading] = useState(true);
     useActivePage('Pokemon')
 
@@ -43,7 +43,7 @@ const AllPokemon = ({ history }) => {
     return (
         <Layout history={history}>
             <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>
-                <Search query={query} setQuery={setQuery} search={search} />
+                <Search query={query} setQuery={setQuery} />
                 <PokemonList>
                     {displayPokemonList()}
                 </PokemonList>

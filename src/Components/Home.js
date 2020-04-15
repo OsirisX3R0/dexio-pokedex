@@ -16,12 +16,9 @@ const Home = () => {
                     <HomeLink>
                         <HomeLinkButton to="/pokemon/list">Pokedex</HomeLinkButton>
                     </HomeLink>
-                    {/* <HomeLink>
-                        <HomeLinkButton to="/pokemon">Button</HomeLinkButton>
-                    </HomeLink>
                     <HomeLink>
-                        <HomeLinkButton to="/pokemon">Button</HomeLinkButton>
-                    </HomeLink> */}
+                        <HomeLinkButton to="/ability/list">Abilities</HomeLinkButton>
+                    </HomeLink>
                 </HomeLinks>
             </HomeNav>
         </>
