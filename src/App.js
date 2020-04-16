@@ -8,6 +8,8 @@ import AllAbilities from './Components/Abilities/AllAbilities';
 import Ability from './Components/Abilities/Ability';
 import './App.scss';
 import 'react-block-ui/style.css';
+import AllMoves from './Components/Moves/AllMoves';
+import Move from './Components/Moves/Move';
 
 const App = () => {
   return (
@@ -18,6 +20,8 @@ const App = () => {
         <Route path="/pokemon/:name" component={Pokemon} />
         <Route path="/ability/list" component={AllAbilities} />
         <Route path="/ability/:name" component={Ability} />
+        <Route path="/move/list" component={AllMoves} />
+        <Route path="/move/:name" component={Move} />
       </Switch>
     </GlobalProvider>
   );

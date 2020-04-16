@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { gray, dark, light } from './Variables';
 import { getTypeColor, getStatColor, getStatBorderColor, getClassBackgroundColor, getClassTextColor } from '../Util/colorHelpers';
-import { List, ListItem, ListName, DetailName } from './General';
+import { DetailName } from './General';
 
 export const PokemonInfo = styled.div``;
 

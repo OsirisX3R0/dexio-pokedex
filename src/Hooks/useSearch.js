@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 const useSearch = (query, collection, property) => {
     const [searchQuery, setSearchQuery] = useState(query);
     const [results, setResults] = useState(null);
-    const [original, setOriginal] = useState([...collection]);
+    const [original, setOriginal] = useState(collection ? [...collection] : []);
 
     const search = useCallback(() => {
         if (searchQuery === '') {

@@ -19,6 +19,9 @@ const Home = () => {
                     <HomeLink>
                         <HomeLinkButton to="/ability/list">Abilities</HomeLinkButton>
                     </HomeLink>
+                    <HomeLink>
+                        <HomeLinkButton to="/move/list">Moves</HomeLinkButton>
+                    </HomeLink>
                 </HomeLinks>
             </HomeNav>
         </>

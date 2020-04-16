@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { List, ListItem, ListName, DetailName } from './General';
+import { DetailName } from './General';
 
 export const AbilityDetailName = styled(DetailName)`
     display: inline-block;
