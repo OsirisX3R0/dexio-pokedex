@@ -1,11 +1,11 @@
 import React from 'react';
-import { PokemonListItem, PokemonName } from '../../Styles/Pokemon';
+import { ListItem, ListName } from '../../Styles/General';
 
 const PokemonItem = ({ name }) => {
     return (
-        <PokemonListItem>
-            <PokemonName to={"/pokemon/" + name}>{name}</PokemonName>
-        </PokemonListItem>
+        <ListItem>
+            <ListName to={"/pokemon/" + name}>{name}</ListName>
+        </ListItem>
     )
 }
 

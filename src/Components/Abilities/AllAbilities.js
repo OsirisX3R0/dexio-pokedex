@@ -5,7 +5,7 @@ import BlockUi from 'react-block-ui';
 import Loader from 'react-loaders';
 import Search from '../Search/Search';
 import AbilityItem from './AbilityItem';
-import { AbilityList } from '../../Styles/Abilities';
+import { List } from '../../Styles/General';
 import { getAllAbilities } from '../../Services/abilityService';
 import Layout from '../Layout/Layout';
 
@@ -46,9 +46,9 @@ const AllAbilities = ({ history }) => {
         <Layout history={history}>
             <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>
                 <Search query={query} setQuery={setQuery} />
-                <AbilityList>
+                <List>
                     {displayAbilityList()}
-                </AbilityList>
+                </List>
             </BlockUi>
         </Layout>
     )

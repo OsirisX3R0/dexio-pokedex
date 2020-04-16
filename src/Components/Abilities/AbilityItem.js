@@ -1,11 +1,11 @@
 import React from 'react';
-import { AbilityListItem, AbilityName } from '../../Styles/Abilities';
+import { ListItem, ListName } from '../../Styles/General';
 
 const AbilityItem = ({ name }) => {
     return (
-        <AbilityListItem>
-            <AbilityName to={"/ability/" + name}>{name}</AbilityName>
-        </AbilityListItem>
+        <ListItem>
+            <ListName to={"/ability/" + name}>{name}</ListName>
+        </ListItem>
     )
 }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BlockUi from 'react-block-ui';
 import Loader from 'react-loaders';
-import { PokemonList } from '../../Styles/Pokemon';
+import { List } from '../../Styles/General';
 import PokemonItem from './PokemonItem';
 import { getAllPokemon } from '../../Services/pokemonService';
 import useActivePage from '../../Hooks/useActivePage';
@@ -44,9 +44,9 @@ const AllPokemon = ({ history }) => {
         <Layout history={history}>
             <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>
                 <Search query={query} setQuery={setQuery} />
-                <PokemonList>
+                <List>
                     {displayPokemonList()}
-                </PokemonList>
+                </List>
             </BlockUi>
         </Layout>
     )

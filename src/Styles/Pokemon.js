@@ -3,13 +3,7 @@ import { gray, dark, light } from './Variables';
 import { getTypeColor, getStatColor, getStatBorderColor, getClassBackgroundColor, getClassTextColor } from '../Util/colorHelpers';
 import { List, ListItem, ListName, DetailName } from './General';
 
-export const PokemonList = styled(List)``;
-
-export const PokemonListItem = styled(ListItem)``;
-
 export const PokemonInfo = styled.div``;
-
-export const PokemonName = styled(ListName)``;
 
 export const PokemonNumber = styled.span`
     font-style: italic;

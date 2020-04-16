@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 import { List, ListItem, ListName, DetailName } from './General';
 
-export const AbilityList = styled(List)``;
-
-export const AbilityListItem = styled(ListItem)``;
-
-export const AbilityName = styled(ListName)``;
-
 export const AbilityDetailName = styled(DetailName)`
     display: inline-block;
 `;
