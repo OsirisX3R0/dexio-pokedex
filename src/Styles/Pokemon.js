@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { gray, dark, light } from './Variables';
 import { getTypeColor, getStatColor, getStatBorderColor, getClassBackgroundColor, getClassTextColor } from '../Util/colorHelpers';
-import { List, ListItem, ListName } from './General';
+import { List, ListItem, ListName, DetailName } from './General';
 
 export const PokemonList = styled(List)``;
 
@@ -32,9 +32,7 @@ export const PokemonDetailInfo = styled.div`
 
 `;
 
-export const PokemonDetailName = styled.h3`
-    text-transform: capitalize;
-`;
+export const PokemonDetailName = styled(DetailName)``;
 
 export const PokemonDetailNumber = styled.div`
     font-size: .8rem;

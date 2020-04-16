@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+export const ListTitle = styled.h4`
+    text-decoration: underline;
+    margin: .75rem 0 .25rem;
+`;
+
 export const List = styled.ul`
     list-style-type: none;
 `;
@@ -25,4 +30,8 @@ export const ListName = styled(Link)`
     &:active {
         background-color: #ddd;
     }
+`;
+
+export const DetailName = styled.h3`
+    text-transform: capitalize;
 `;

@@ -32,7 +32,7 @@ const PokemonMoves = () => {
         return levelUpMoves.map((move, index) => {
             let details = move.version_group_details.filter(vgd => vgd.version_group.name === genFilter)[0];
 
-            if (details.level_learned_at === 0)
+            if (!details || details.level_learned_at === 0)
                 return null;
 
             return (
