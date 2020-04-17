@@ -13,6 +13,7 @@ import {
     MoveDetailDescription,
     MoveDetailFlavor
  } from '../../Styles/Moves';
+import { formatName } from '../../Util/nameHelpers';
 
 const MoveDetails = () => {
     const { move } = useContext(MoveContext);
@@ -39,7 +40,7 @@ const MoveDetails = () => {
                     </MoveDetailLeft>
                     <MoveDetailRight>
                         <MoveDetailName>
-                            {move.name}
+                            {formatName(move.name)}
                         </MoveDetailName>
                         <MoveDetailGen>
                             Introduced in {generation}&nbsp;
