@@ -1,30 +1,30 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import { getMove } from '../Services/moveService';
 import BlockUi from 'react-block-ui';
 import Loader from 'react-loaders';
-import { getAbility } from '../Services/abilityService';
 
-export const AbilityContext = createContext();
+export const MoveContext = createContext();
 
-export const AbilityProvider = ({ children }) => {
-    let { name } = useParams();
-    const [ability, setAbility] = useState(null);
+export const MoveProvider = ({ children }) => {
+    const { name } = useParams();
+    const [move, setMove] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getAbility(name)
-            .then(res => setAbility(res.data))
+        getMove(name)
+            .then(res => setMove(res.data))
             .finally(() => setLoading(false))
     }, [name])
 
     return (
-        <AbilityContext.Provider value={{
+        <MoveContext.Provider value={{
             name,
-            ability
+            move
         }}>
             <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>
                 {children}
             </BlockUi>
-        </AbilityContext.Provider>
+        </MoveContext.Provider>
     )
 }

@@ -4,6 +4,7 @@ export const light = "#f5f5f5";
 export const lightGray = "#eee";
 export const dark = "#333";
 export const gray = "#aaa";
+export const border = "1px solid rgba(0,0,0,0.2)";
 
 export const typeColors = [
     { name: "normal", color: "#A8A878"},

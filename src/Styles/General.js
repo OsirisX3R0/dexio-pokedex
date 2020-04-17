@@ -1,5 +1,26 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { light } from './Variables';
+import { getTypeColor, getClassTextColor, getClassBackgroundColor } from '../Util/colorHelpers';
+
+export const Pill = styled.span`
+    font-size: .75rem;
+    border-radius: 1rem;
+    text-transform: capitalize;
+    margin-right: .25rem;
+    padding: .35rem .5rem;
+    display: inline-block;
+`;
+
+export const Type = styled(Pill)`
+    color: ${light};
+    background-color: ${props => getTypeColor(props.pokemonType)};
+`;
+
+export const Class = styled(Pill)`
+    color: ${props => getClassTextColor(props.typeClass)};
+    background-color: ${props => getClassBackgroundColor(props.typeClass)};
+`;
 
 export const ListTitle = styled.h4`
     text-decoration: underline;
