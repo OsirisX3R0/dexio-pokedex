@@ -67,7 +67,7 @@ export const Stats = styled.div`
     margin-top: 1rem;
     padding-bottom: 1rem;
     display: grid;
-    grid-template-columns: 81px 24px 1fr;
+    grid-template-columns: 97px 24px 1fr;
     grid-gap: .25rem;
 `;
 
@@ -95,7 +95,7 @@ export const DamageTable = styled.div`
     margin-top: 1rem;
     padding-bottom: 1rem;
     display: grid;
-    grid-template-columns: 100px 1fr;
+    grid-template-columns: 111px 1fr;
     align-items: center;
     grid-gap: .5rem;
 `;
@@ -156,6 +156,7 @@ export const MoveTableCell = styled.td`
     border-bottom: 1px solid ${gray};
     text-align: center;
     text-transform: capitalize;
+    padding: .1rem;
 `;
 
 export const MoveTableName = styled(MoveTableCell)`
