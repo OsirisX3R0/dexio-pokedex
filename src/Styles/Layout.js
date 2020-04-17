@@ -11,6 +11,7 @@ export const BackButton = styled.button`
     background-color: transparent;
     color: ${light};
     border-width: 0;
+    font-size: .85rem;
     font-weight:500;
 `;
 
