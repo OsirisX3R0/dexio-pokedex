@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
-const useSearch = (query, collection, property) => {
+const useSearch = (query, collection) => {
     const [searchQuery, setSearchQuery] = useState(query);
     const [results, setResults] = useState(null);
     const [original, setOriginal] = useState(collection ? [...collection] : []);
@@ -10,9 +10,9 @@ const useSearch = (query, collection, property) => {
             setResults(original);
             return;
         }
-        let searchResults = collection.filter(i => i[property].indexOf(searchQuery) !== -1);
+        let searchResults = collection.filter(i => i.name.indexOf(searchQuery) !== -1);
         setResults(searchResults);
-    }, [searchQuery, collection, original, property])
+    }, [searchQuery, collection, original])
 
     useEffect(() => {
         setOriginal(collection)

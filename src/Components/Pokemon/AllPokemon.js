@@ -12,7 +12,7 @@ import useSearch from '../../Hooks/useSearch';
 const AllPokemon = ({ history }) => {
     const [allPokemon, setAllPokemon] = useState([]);
     const [query, setQuery] = useState('');
-    const results = useSearch(query, allPokemon, "name");
+    const results = useSearch(query, allPokemon);
     const [loading, setLoading] = useState(true);
     useActivePage('Pokemon')
 

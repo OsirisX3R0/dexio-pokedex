@@ -12,7 +12,7 @@ import Layout from '../Layout/Layout';
 const AllAbilities = ({ history }) => {
     const [allAbilities, setAllAbilities] = useState([]);
     const [query, setQuery] = useState('');
-    const results = useSearch(query, allAbilities, "name");
+    const results = useSearch(query, allAbilities);
     const [loading, setLoading] = useState(true);
     useActivePage('Abilities');
     

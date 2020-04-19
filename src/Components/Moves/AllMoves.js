@@ -12,7 +12,7 @@ import MoveItem from './MoveItem';
 const AllMoves = ({ history }) => {
     const [allMoves, setAllMoves] = useState(null);
     const [query, setQuery] = useState('');
-    const results = useSearch(query, allMoves, "name");
+    const results = useSearch(query, allMoves);
     const [loading, setLoading] = useState(true);
     useActivePage('Moves');
 
