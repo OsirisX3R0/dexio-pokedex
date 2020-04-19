@@ -128,6 +128,9 @@ export const DamageTablePower = styled.span`
     border-radius: 50%;
     text-transform: none;
     padding: .1rem;
+    display: grid;
+    align-items: center;
+    justify-content: center;
 `;
 
 export const MoveTable = styled.table`

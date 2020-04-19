@@ -106,16 +106,17 @@ export const PokemonProvider = ({ children }) => {
 
                 setRelations({
                     weakTo: weakTo
-                        .filter((type, index, self) => 
-                            index === self.findIndex((t) => (
-                                (t.name === type.name && t.power === type.power) ||
-                                (
-                                    fullRelations.half_damage_from.some(r => r.name === type.name) ||
-                                    fullRelations.no_damage_from.some(r => r.name === type.name)
-                                )
-                            ))
-                        ),
-                    resistantTo,
+                        .filter(t => !(
+                            normallyDamaged.some(tn => tn.name === t.name) ||
+                            resistantTo.some(tn => tn.name === t.name) ||
+                            immuneTo.some(tn => tn.name === t.name)
+                        )),
+                    resistantTo: resistantTo
+                        .filter(t => !(
+                            weakTo.some(tn => tn.name === t.name) ||
+                            normallyDamaged.some(tn => tn.name === t.name) ||
+                            immuneTo.some(tn => tn.name === t.name)
+                        )),
                     immuneTo,
                     normallyDamaged
                 })
