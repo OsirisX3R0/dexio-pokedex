@@ -10,7 +10,7 @@ const useSearch = (query, collection) => {
             setResults(original);
             return;
         }
-        let searchResults = collection.filter(i => i.name.indexOf(searchQuery) !== -1);
+        let searchResults = collection.filter(i => i.name.includes(searchQuery));
         setResults(searchResults);
     }, [searchQuery, collection, original])
 
