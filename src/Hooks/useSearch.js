@@ -11,20 +11,16 @@ const useSearch = (query, collection) => {
             return;
         }
 
-        let searchResults = [];//collection.filter(i => i.name.indexOf(searchQuery) !== -1);
-        collection.forEach(item => {
-            if (item.name.indexOf(query) !== -1)
-                searchResults.push(item);
-        });
+        let searchResults = collection.filter(i => i.name.includes(searchQuery));
         setResults(searchResults);
-    }, [searchQuery, original, collection, query])
+    }, [searchQuery, collection, original])
 
     useEffect(() => {
         setOriginal(collection)
     }, [collection])
 
     useEffect(() => {
-        setSearchQuery(query);
+        setSearchQuery(query.toLowerCase());
         search();
     }, [query, search])
 
