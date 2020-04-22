@@ -40,21 +40,10 @@ const AllPokemon = ({ history }) => {
         }
     }
 
-    const displayCount = () => {
-        if (results)
-            return results.length
-
-        if (allPokemon)
-            return allPokemon.length
-
-        return 0
-    }
-
     return (
         <Layout history={history}>
             <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>
                 <Search query={query} setQuery={setQuery} />
-                {displayCount()}
                 <List>
                     {displayPokemonList()}
                 </List>
