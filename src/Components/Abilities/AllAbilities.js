@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import ReactPlaceholder from 'react-placeholder';
 import useActivePage from '../../Hooks/useActivePage';
 import useSearch from '../../Hooks/useSearch';
-import BlockUi from 'react-block-ui';
-import Loader from 'react-loaders';
 import Search from '../Search/Search';
 import AbilityItem from './AbilityItem';
 import { List } from '../../Styles/General';
 import { getAllAbilities } from '../../Services/abilityService';
 import Layout from '../Layout/Layout';
+import listPlaceholder from '../../Placeholders/AllPokemon';
 
 const AllAbilities = ({ history }) => {
     const [allAbilities, setAllAbilities] = useState([]);
@@ -44,12 +44,12 @@ const AllAbilities = ({ history }) => {
 
     return (
         <Layout history={history}>
-            <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>
+            <ReactPlaceholder ready={!loading} customPlaceholder={listPlaceholder}>
                 <Search query={query} setQuery={setQuery} />
                 <List>
                     {displayAbilityList()}
                 </List>
-            </BlockUi>
+            </ReactPlaceholder>
         </Layout>
     )
 }

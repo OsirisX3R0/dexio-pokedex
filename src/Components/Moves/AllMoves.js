@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import ReactPlaceholder from 'react-placeholder';
 import useActivePage from '../../Hooks/useActivePage';
 import { getAllMoves } from '../../Services/moveService';
 import Layout from '../Layout/Layout';
-import BlockUi from 'react-block-ui';
-import Loader from 'react-loaders';
 import useSearch from '../../Hooks/useSearch';
 import Search from '../Search/Search';
 import { List } from '../../Styles/General';
 import MoveItem from './MoveItem';
+import listPlaceholder from '../../Placeholders/AllPokemon';
 
 const AllMoves = ({ history }) => {
     const [allMoves, setAllMoves] = useState(null);
@@ -42,12 +42,12 @@ const AllMoves = ({ history }) => {
 
     return (
         <Layout history={history}>
-            <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>
+            <ReactPlaceholder ready={!loading} customPlaceholder={listPlaceholder}>
                 <Search query={query} setQuery={setQuery} />
                 <List>
                     {displayPokemonList()}
                 </List>
-            </BlockUi>
+            </ReactPlaceholder>
         </Layout>
     )
 }

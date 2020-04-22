@@ -11,6 +11,7 @@ import Move from './Components/Moves/Move';
 import TypeChart from './Components/Types/TypeChart';
 import './App.scss';
 import 'react-block-ui/style.css';
+import "react-placeholder/lib/reactPlaceholder.css";
 
 const App = () => {
   return (

@@ -8920,6 +8920,11 @@ react-loaders@^3.0.1:
   dependencies:
     classnames "^2.2.3"
 
+react-placeholder@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-placeholder/-/react-placeholder-4.0.1.tgz#2a9d0247ec04ee1895d0cd28dca1190d1e0756ec"
+  integrity sha512-UyFrOMu+O8Yqj1hY/KmOgMRvv41thzv3cUp0Z5s55a4BG4Kyvvz1bhnYnomEusFYa4eESTAqT/B1dRg+R59D5Q==
+
 react-router-dom@^5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-5.1.2.tgz#06701b834352f44d37fbb6311f870f84c76b9c18"

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import BlockUi from 'react-block-ui';
-import Loader from 'react-loaders';
+import ReactPlaceholder from 'react-placeholder';
 import { List } from '../../Styles/General';
 import PokemonItem from './PokemonItem';
 import { getAllPokemon } from '../../Services/pokemonService';
@@ -8,6 +7,7 @@ import useActivePage from '../../Hooks/useActivePage';
 import Layout from '../Layout/Layout';
 import Search from '../Search/Search';
 import useSearch from '../../Hooks/useSearch';
+import listPlaceholder from '../../Placeholders/AllPokemon';
 
 const AllPokemon = ({ history }) => {
     const [allPokemon, setAllPokemon] = useState([]);
@@ -42,12 +42,12 @@ const AllPokemon = ({ history }) => {
 
     return (
         <Layout history={history}>
-            <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>
+            <ReactPlaceholder ready={!loading} customPlaceholder={listPlaceholder}>
                 <Search query={query} setQuery={setQuery} />
                 <List>
                     {displayPokemonList()}
                 </List>
-            </BlockUi>
+            </ReactPlaceholder>
         </Layout>
     )
 }
