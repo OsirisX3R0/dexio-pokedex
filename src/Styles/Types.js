@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { getTypeColor } from '../Util/colorHelpers';
-import { light, lightGray, dark } from './Variables';
+import { light, dark } from './Variables';
 import { getDamageValueBackground } from '../Util/typeHelpers';
 
 export const ChartContainer = styled.div`
