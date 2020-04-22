@@ -6,10 +6,11 @@ import AllPokemon from './Components/Pokemon/AllPokemon';
 import Pokemon from './Components/Pokemon/Pokemon';
 import AllAbilities from './Components/Abilities/AllAbilities';
 import Ability from './Components/Abilities/Ability';
-import './App.scss';
-import 'react-block-ui/style.css';
 import AllMoves from './Components/Moves/AllMoves';
 import Move from './Components/Moves/Move';
+import TypeChart from './Components/Types/TypeChart';
+import './App.scss';
+import 'react-block-ui/style.css';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/ability/:name" component={Ability} />
         <Route path="/move/list" component={AllMoves} />
         <Route path="/move/:name" component={Move} />
+        <Route path="/type/chart" component={TypeChart} />
       </Switch>
     </GlobalProvider>
   );
