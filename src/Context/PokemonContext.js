@@ -1,6 +1,4 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
-import BlockUi from 'react-block-ui';
-import Loader from 'react-loaders';
 import { useParams } from 'react-router';
 import { getPokemon } from '../Services/pokemonService';
 import { getAllTypes, getType } from '../Services/typeService';
@@ -132,7 +130,6 @@ export const PokemonProvider = ({ children }) => {
                     .map(s => s.base_stat)
                     .reduce((total, next) => total + next))
             })
-            .finally(() => setLoading(false))
         
     }, [name])
 
@@ -156,6 +153,7 @@ export const PokemonProvider = ({ children }) => {
                     let typesArr = res.filter(t => t.data.damage_relations).map(t => t.data);
                     getDamageRelations(typesArr);
                 })
+                .finally(() => setLoading(false))
         }
     }, [pokemon, types, getDamageRelations])
 
@@ -167,9 +165,7 @@ export const PokemonProvider = ({ children }) => {
             relations,
             loading
         }}>
-            <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>
-                {children}
-            </BlockUi>
+            {children}
         </PokemonContext.Provider>
     )
 }

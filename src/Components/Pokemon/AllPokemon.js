@@ -7,7 +7,7 @@ import useActivePage from '../../Hooks/useActivePage';
 import Layout from '../Layout/Layout';
 import Search from '../Search/Search';
 import useSearch from '../../Hooks/useSearch';
-import listPlaceholder from '../../Placeholders/AllPokemon';
+import listPlaceholder from '../../Placeholders/listPlaceholder';
 
 const AllPokemon = ({ history }) => {
     const [allPokemon, setAllPokemon] = useState([]);
@@ -42,7 +42,7 @@ const AllPokemon = ({ history }) => {
 
     return (
         <Layout history={history}>
-            <ReactPlaceholder ready={!loading} customPlaceholder={listPlaceholder}>
+            <ReactPlaceholder ready={!loading} customPlaceholder={listPlaceholder} showLoadingAnimation>
                 <Search query={query} setQuery={setQuery} />
                 <List>
                     {displayPokemonList()}

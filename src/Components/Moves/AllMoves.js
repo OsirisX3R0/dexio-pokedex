@@ -7,7 +7,7 @@ import useSearch from '../../Hooks/useSearch';
 import Search from '../Search/Search';
 import { List } from '../../Styles/General';
 import MoveItem from './MoveItem';
-import listPlaceholder from '../../Placeholders/AllPokemon';
+import listPlaceholder from '../../Placeholders/listPlaceholder';
 
 const AllMoves = ({ history }) => {
     const [allMoves, setAllMoves] = useState(null);
@@ -42,7 +42,7 @@ const AllMoves = ({ history }) => {
 
     return (
         <Layout history={history}>
-            <ReactPlaceholder ready={!loading} customPlaceholder={listPlaceholder}>
+            <ReactPlaceholder ready={!loading} customPlaceholder={listPlaceholder} showLoadingAnimation>
                 <Search query={query} setQuery={setQuery} />
                 <List>
                     {displayPokemonList()}

@@ -7,7 +7,7 @@ import AbilityItem from './AbilityItem';
 import { List } from '../../Styles/General';
 import { getAllAbilities } from '../../Services/abilityService';
 import Layout from '../Layout/Layout';
-import listPlaceholder from '../../Placeholders/AllPokemon';
+import listPlaceholder from '../../Placeholders/listPlaceholder';
 
 const AllAbilities = ({ history }) => {
     const [allAbilities, setAllAbilities] = useState([]);
@@ -44,7 +44,7 @@ const AllAbilities = ({ history }) => {
 
     return (
         <Layout history={history}>
-            <ReactPlaceholder ready={!loading} customPlaceholder={listPlaceholder}>
+            <ReactPlaceholder ready={!loading} customPlaceholder={listPlaceholder} showLoadingAnimation>
                 <Search query={query} setQuery={setQuery} />
                 <List>
                     {displayAbilityList()}
