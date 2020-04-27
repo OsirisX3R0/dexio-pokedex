@@ -22,7 +22,7 @@ export const AbilityProvider = ({ children }) => {
             name,
             ability
         }}>
-            <ReactPlaceholder ready={loading} customPlaceholder={abilityPlaceholder} showLoadingAnimation>
+            <ReactPlaceholder ready={!loading} customPlaceholder={abilityPlaceholder} showLoadingAnimation>
                 {children}
             </ReactPlaceholder>
         </AbilityContext.Provider>
