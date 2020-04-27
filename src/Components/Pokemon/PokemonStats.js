@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import ReactPlaceholder from 'react-placeholder';
 import { PokemonContext } from '../../Context/PokemonContext';
 import {
     Stats,
@@ -7,11 +6,10 @@ import {
     StatValue,
     StatTotal,
     StatBar
-} from '../../Styles/Pokemon'
-import statsPlaceholder from '../../Placeholders/Pokemon/statsPlaceholder';
+} from '../../Styles/Pokemon';
 
 const PokemonStats = () => {
-    const { pokemon, loading, statTotal } = useContext(PokemonContext);
+    const { pokemon, statTotal } = useContext(PokemonContext);
 
     const getBaseStat = stat => {
         return pokemon.stats
@@ -23,30 +21,28 @@ const PokemonStats = () => {
             return <div></div>
         
         return (
-            <ReactPlaceholder ready={!loading} customPlaceholder={statsPlaceholder}>
-                <Stats>
-                    <StatName>HP</StatName>
-                    <StatValue>{getBaseStat('hp')}</StatValue>
-                    <StatBar statValue={getBaseStat('hp')} statMax="255" pokemonStat="hp" />
-                    <StatName>Attack</StatName>
-                    <StatValue>{getBaseStat('attack')}</StatValue>
-                    <StatBar statValue={getBaseStat('attack')} statMax="255" pokemonStat="attack" />
-                    <StatName>Defense</StatName>
-                    <StatValue>{getBaseStat('defense')}</StatValue>
-                    <StatBar statValue={getBaseStat('defense')} statMax="255" pokemonStat="defense" />
-                    <StatName>Sp. Attack</StatName>
-                    <StatValue>{getBaseStat('special-attack')}</StatValue>
-                    <StatBar statValue={getBaseStat('special-attack')} statMax="255" pokemonStat="special-attack" />
-                    <StatName>Sp. Defense</StatName>
-                    <StatValue>{getBaseStat('special-defense')}</StatValue>
-                    <StatBar statValue={getBaseStat('special-defense')} statMax="255" pokemonStat="special-defense" />
-                    <StatName>Speed</StatName>
-                    <StatValue>{getBaseStat('speed')}</StatValue>
-                    <StatBar statValue={getBaseStat('speed')} statMax="255" pokemonStat="speed" />
-                    <StatName>Total</StatName>
-                    <StatTotal>{statTotal}</StatTotal>
-                </Stats>
-            </ReactPlaceholder>
+            <Stats>
+                <StatName>HP</StatName>
+                <StatValue>{getBaseStat('hp')}</StatValue>
+                <StatBar statValue={getBaseStat('hp')} statMax="255" pokemonStat="hp" />
+                <StatName>Attack</StatName>
+                <StatValue>{getBaseStat('attack')}</StatValue>
+                <StatBar statValue={getBaseStat('attack')} statMax="255" pokemonStat="attack" />
+                <StatName>Defense</StatName>
+                <StatValue>{getBaseStat('defense')}</StatValue>
+                <StatBar statValue={getBaseStat('defense')} statMax="255" pokemonStat="defense" />
+                <StatName>Sp. Attack</StatName>
+                <StatValue>{getBaseStat('special-attack')}</StatValue>
+                <StatBar statValue={getBaseStat('special-attack')} statMax="255" pokemonStat="special-attack" />
+                <StatName>Sp. Defense</StatName>
+                <StatValue>{getBaseStat('special-defense')}</StatValue>
+                <StatBar statValue={getBaseStat('special-defense')} statMax="255" pokemonStat="special-defense" />
+                <StatName>Speed</StatName>
+                <StatValue>{getBaseStat('speed')}</StatValue>
+                <StatBar statValue={getBaseStat('speed')} statMax="255" pokemonStat="speed" />
+                <StatName>Total</StatName>
+                <StatTotal>{statTotal}</StatTotal>
+            </Stats>
         )
     }
 

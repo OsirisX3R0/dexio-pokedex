@@ -1,8 +1,10 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router';
+import ReactPlaceholder from 'react-placeholder';
 import { getPokemon } from '../Services/pokemonService';
 import { getAllTypes, getType } from '../Services/typeService';
 import { getMove } from '../Services/moveService';
+import pokemonPlaceholder from '../Placeholders/Pokemon/pokemonPlaceholder';
 
 export const PokemonContext = createContext();
 
@@ -165,7 +167,9 @@ export const PokemonProvider = ({ children }) => {
             relations,
             loading
         }}>
-            {children}
+            <ReactPlaceholder ready={!loading} customPlaceholder={pokemonPlaceholder} showLoadingAnimation>
+                {children}
+            </ReactPlaceholder>
         </PokemonContext.Provider>
     )
 }

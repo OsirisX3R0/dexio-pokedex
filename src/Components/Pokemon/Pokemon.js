@@ -12,16 +12,16 @@ const Pokemon = ({ history }) => {
     useActivePage('Pokemon Detail');
 
     return (
-        <PokemonProvider>
-            <Layout history={history}>
+        <Layout history={history}>
+            <PokemonProvider>
                 <Container>
                     <PokemonDetails />
                     <PokemonStats />
                     <PokemonDamage />
                     <PokemonMoves />
                 </Container>
-            </Layout>
-        </PokemonProvider>
+            </PokemonProvider>
+        </Layout>
     )
 }
 
