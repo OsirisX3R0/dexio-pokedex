@@ -22,7 +22,9 @@ export const AbilityDetailDescription = styled.h4`
 export const AbilityDetailFlavor = styled.div`
     font-style: italic;
     margin: .5rem 0;
+`;
 
+export const AbilityDetailFlavorWithQuotes = styled(AbilityDetailFlavor)`
     &:before, &:after {
         content: '"';
     }

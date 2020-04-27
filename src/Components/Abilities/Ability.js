@@ -10,15 +10,15 @@ const Ability = ({ history }) => {
     useActivePage('Ability Detail');
 
     return (
-        <AbilityProvider>
-            <Layout history={history}>
-                <Container>
-                    <AbilityDetails />
-                    <AbilityPokemonList />
-                    <AbilityPokemonList hidden />
-                </Container>
-            </Layout>
-        </AbilityProvider>
+        <Layout history={history}>
+            <AbilityProvider>
+                    <Container>
+                        <AbilityDetails />
+                        <AbilityPokemonList />
+                        <AbilityPokemonList hidden />
+                    </Container>
+            </AbilityProvider>
+        </Layout>
     )
 }
 

@@ -6,7 +6,7 @@ import {
     AbilityDetailGen, 
     AbilityDetailNum, 
     AbilityDetailDescription,
-    AbilityDetailFlavor
+    AbilityDetailFlavorWithQuotes
  } from '../../Styles/Abilities';
 import { formatName } from '../../Util/nameHelpers';
 
@@ -33,7 +33,7 @@ const AbilityDetails = () => {
                     Introduced in {generation}&nbsp;
                     <AbilityDetailNum>{number}</AbilityDetailNum>
                 </AbilityDetailGen>
-                <AbilityDetailFlavor>{flavorText}</AbilityDetailFlavor>
+                <AbilityDetailFlavorWithQuotes>{flavorText}</AbilityDetailFlavorWithQuotes>
                 <AbilityDetailDescription>{description}</AbilityDetailDescription>
             </>
         )

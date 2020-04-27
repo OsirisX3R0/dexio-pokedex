@@ -1,8 +1,8 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import BlockUi from 'react-block-ui';
-import Loader from 'react-loaders';
+import ReactPlaceholder from 'react-placeholder';
 import { getAbility } from '../Services/abilityService';
+import abilityPlaceholder from '../Placeholders/abilityPlaceholder';
 
 export const AbilityContext = createContext();
 
@@ -22,9 +22,9 @@ export const AbilityProvider = ({ children }) => {
             name,
             ability
         }}>
-            <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>
+            <ReactPlaceholder ready={loading} customPlaceholder={abilityPlaceholder} showLoadingAnimation>
                 {children}
-            </BlockUi>
+            </ReactPlaceholder>
         </AbilityContext.Provider>
     )
 }
