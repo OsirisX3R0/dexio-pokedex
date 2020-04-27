@@ -30,20 +30,20 @@ const pokemonPlaceholder = (
             <RectShape color="gray" style={{width: 94, height: 94}} />
             <PokemonDetailInfo>
                 <PokemonDetailName>
-                    <TextRow color="gray" />
+                    <TextRow color="gray" style={{ marginTop: 0 }} />
                 </PokemonDetailName>
                 <PokemonDetailNumber>
-                    <TextRow color="gray" />
+                    <TextRow color="gray" style={{ width: 35, marginTop: 5 }} />
                 </PokemonDetailNumber>
                 <PokemonDetailSize>
-                    <TextRow color="gray" />
+                    <TextRow color="gray" style={{ width: 75, marginTop: 5 }} />
                 </PokemonDetailSize>
                 <PokemonDetailAbilityList>
-                    <TextBlock color="gray" rows={2} />
+                    <TextBlock color="gray" rows={2} style={{ marginTop: 5, padding: 0 }} />
                 </PokemonDetailAbilityList>
                 <PokemonTypes>
-                    <RoundShape color="gray" style={{width: 94}} />
-                    <RoundShape color="gray" style={{width: 94, marginLeft: '.5rem'}} />
+                    <RoundShape color="gray" style={{width: 45, height: 25, display: 'inline-block'}} />
+                    <RoundShape color="gray" style={{width: 45, height: 25, display: 'inline-block', marginLeft: '.5rem'}} />
                 </PokemonTypes>
             </PokemonDetailInfo>
         </PokemonDetailHeader>
