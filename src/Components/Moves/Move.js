@@ -10,14 +10,14 @@ const Move = ({ history }) => {
     useActivePage('Move Detail');
 
     return (
-        <MoveProvider>
-            <Layout history={history}>
-                <Container>
-                    <MoveDetails />
-                    <MoveStats />
-                </Container>
-            </Layout>
-        </MoveProvider>
+        <Layout history={history}>
+            <MoveProvider>
+                    <Container>
+                        <MoveDetails />
+                        <MoveStats />
+                    </Container>
+            </MoveProvider>
+        </Layout>
     )
 }
 

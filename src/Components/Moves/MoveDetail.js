@@ -11,7 +11,7 @@ import {
     MoveDetailGen, 
     MoveDetailNum, 
     MoveDetailDescription,
-    MoveDetailFlavor
+    MoveDetailFlavorWithQuotes
  } from '../../Styles/Moves';
 import { formatName } from '../../Util/nameHelpers';
 
@@ -48,7 +48,7 @@ const MoveDetails = () => {
                         </MoveDetailGen>
                     </MoveDetailRight>             
                 </MoveDetailContainer>   
-                <MoveDetailFlavor>{flavorText}</MoveDetailFlavor>
+                <MoveDetailFlavorWithQuotes>{flavorText}</MoveDetailFlavorWithQuotes>
                 <MoveDetailDescription>{description}</MoveDetailDescription>
             </>
         )

@@ -44,7 +44,9 @@ export const MoveDetailDescription = styled.h4`
 export const MoveDetailFlavor = styled.div`
     font-style: italic;
     margin: .5rem 0;
+`;
 
+export const MoveDetailFlavorWithQuotes = styled(MoveDetailFlavor)`
     &:before, &:after {
         content: '"';
     }

@@ -3,8 +3,6 @@ import { TextRow, TextBlock } from 'react-placeholder/lib/placeholders';
 import { Container } from '../Styles/Layout';
 import { DetailName, ListTitle, ListItem, ListName, List } from '../Styles/General';
 import { 
-    AbilityDetailName, 
-    //AbilityDetailGen,
     AbilityDetailDescription,
     AbilityDetailFlavor
  } from '../Styles/Abilities';
@@ -14,9 +12,6 @@ const abilityPlaceholder = (
         <DetailName>
             <TextRow color="gray" style={{ marginTop: 0}} />
         </DetailName>
-        {/* <AbilityDetailGen>
-            <TextRow color="gray" />
-        </AbilityDetailGen> */}
         <AbilityDetailFlavor>
             <TextBlock color="gray" rows={2} />
         </AbilityDetailFlavor>

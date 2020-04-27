@@ -1,8 +1,8 @@
 import React, { createContext, useState, useEffect } from 'react';
+import ReactPlaceholder from 'react-placeholder';
 import { useParams } from 'react-router';
 import { getMove } from '../Services/moveService';
-import BlockUi from 'react-block-ui';
-import Loader from 'react-loaders';
+import movePlaceholder from '../Placeholders/movePlaceholder';
 
 export const MoveContext = createContext();
 
@@ -22,9 +22,9 @@ export const MoveProvider = ({ children }) => {
             name,
             move
         }}>
-            <BlockUi blocking={loading} loader={<Loader type="ball-grid-pulse" />}>
+            <ReactPlaceholder ready={!loading} customPlaceholder={movePlaceholder}>
                 {children}
-            </BlockUi>
+            </ReactPlaceholder>
         </MoveContext.Provider>
     )
 }
