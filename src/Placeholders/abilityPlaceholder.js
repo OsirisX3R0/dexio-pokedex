@@ -1,19 +1,19 @@
 import React from 'react';
 import { TextRow, TextBlock } from 'react-placeholder/lib/placeholders';
 import { Container } from '../Styles/Layout';
+import { DetailName, ListTitle, ListItem, ListName, List } from '../Styles/General';
 import { 
     AbilityDetailName, 
-    AbilityDetailGen,
+    //AbilityDetailGen,
     AbilityDetailDescription,
     AbilityDetailFlavor
  } from '../Styles/Abilities';
- import { ListTitle, ListItem, ListName, List } from '../Styles/General';
 
 const abilityPlaceholder = (
     <Container>
-        <AbilityDetailName>
+        <DetailName>
             <TextRow color="gray" style={{ marginTop: 0}} />
-        </AbilityDetailName>
+        </DetailName>
         {/* <AbilityDetailGen>
             <TextRow color="gray" />
         </AbilityDetailGen> */}
