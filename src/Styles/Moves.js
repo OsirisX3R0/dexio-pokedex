@@ -4,7 +4,7 @@ import { border } from './Variables';
 
 export const MoveDetailContainer = styled.div`
     display: grid;
-    grid-template-columns: 56px 1fr;
+    grid-template-columns: 65px 1fr;
     grid-gap: .5rem;
 `;
 
@@ -13,7 +13,9 @@ export const MoveDetailLeft = styled.div``;
 export const MoveDetailRight = styled.div``;
 
 export const MoveDetailType = styled(Type)`
-    display: block;
+    display: grid;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const MoveDetailClass = styled(Class)`
