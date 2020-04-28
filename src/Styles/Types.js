@@ -1,7 +1,37 @@
 import styled from 'styled-components';
 import { getTypeColor } from '../Util/colorHelpers';
-import { light, dark } from './Variables';
+import { border, light, dark } from './Variables';
 import { getDamageValueBackground } from '../Util/typeHelpers';
+import { Toggle } from './General';
+
+export const ChartToggleContainer = styled.div`
+    height: 43px;
+    background-color: ${light};
+    border-bottom: ${border};
+    margin-bottom: .5rem;
+    padding: .5rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+`;
+
+export const ChartTypeSelect = styled.select`
+    width: 100%;
+    border-radius: 5px;
+    text-transform: capitalize;
+    padding: .25rem;
+`;
+
+export const ChartTypeOption = styled.option`
+    text-transform: capitalize;
+`;
+
+export const ChartToggleSwitch = styled(Toggle)`
+    place-self: center flex-end;
+`;
 
 export const ChartContainer = styled.div`
     font-size: 0.75rem;
@@ -31,6 +61,10 @@ export const ChartHeader = styled.div`
     justify-content: center;
 `;
 
+export const ChartHeaderFull = styled(ChartHeader)`
+    grid-column: 1 / -1;
+`;
+
 export const ChartHeadCorner = styled(ChartHeaderCell)`
     top: 0;
     left: 0;
@@ -42,6 +76,8 @@ export const ChartDefenseHeaderCell = styled(ChartHeaderCell)`
 `;
 
 export const ChartOffenseHeaderCell = styled(ChartHeaderCell)`
+    grid-template-columns: repeat(2, 50%);
+    grid-gap: .1rem;
     left: 0;
 `;
 

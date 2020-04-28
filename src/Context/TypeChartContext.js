@@ -7,6 +7,8 @@ export const TypeChartContext = createContext();
 
 export const TypeChartProvider = ({ children }) => {
     const [allTypes, setAllTypes] = useState([]);
+    const [dual, setDual] = useState(false);
+    const [secondType, setSecondType] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -18,9 +20,19 @@ export const TypeChartProvider = ({ children }) => {
             .finally(() => setLoading(false))
     }, [])
 
+    useEffect(() => {
+        if (dual && !secondType) {
+            setSecondType('normal');
+        }
+    }, [dual, secondType])
+
     return (
         <TypeChartContext.Provider value={{
             allTypes,
+            dual,
+            setDual,
+            secondType, 
+            setSecondType,
             loading
         }}>
             <ReactPlaceholder ready={!loading} customPlaceholder={typeChartPlaceholder} showLoadingAnimation>

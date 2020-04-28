@@ -1,8 +1,9 @@
 import React from 'react';
 import useActivePage from '../../Hooks/useActivePage';
 import Layout from '../Layout/Layout';
-import { TypeChartProvider } from '../../Context/TypeChartContext';
+import ChartToggle from './ChartToggle';
 import Chart from './Chart';
+import { TypeChartProvider } from '../../Context/TypeChartContext';
 import { Container } from '../../Styles/Layout';
 
 const TypeChart = ({ history }) => {
@@ -12,6 +13,7 @@ const TypeChart = ({ history }) => {
         <TypeChartProvider>
             <Layout history={history}>
                 <Container>
+                    <ChartToggle />
                     <Chart />
                 </Container>
             </Layout>

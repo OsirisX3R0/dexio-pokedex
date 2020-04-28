@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { gray, dark, light } from './Variables';
+import { gray, dark, light, border } from './Variables';
 import { getTypeColor, getStatColor, getStatBorderColor, getClassBackgroundColor, getClassTextColor } from '../Util/colorHelpers';
 import { DetailName } from './General';
 
@@ -10,7 +10,7 @@ export const PokemonNumber = styled.span`
 `;
 
 export const PokemonDetailHeader = styled.div`
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: ${border};
     padding-bottom: 1rem;
     display: grid;
     grid-template-columns: 96px 1fr;
@@ -63,7 +63,7 @@ export const Type = styled.span`
 `;
 
 export const Stats = styled.div`
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    border-bottom: ${border};
     margin-top: 1rem;
     padding-bottom: 1rem;
     display: grid;

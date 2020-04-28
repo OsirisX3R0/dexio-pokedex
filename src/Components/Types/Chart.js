@@ -4,7 +4,7 @@ import ChartRow from './ChartRow';
 import { ChartHeadCorner, ChartDefenseHeaderCell, ChartHeader, ChartContainer } from '../../Styles/Types';
 
 const Chart = () => {
-    const { allTypes } = useContext(TypeChartContext);
+    const { allTypes, dual } = useContext(TypeChartContext);
 
     const displayHead = () => {
         if (!allTypes)
@@ -12,7 +12,10 @@ const Chart = () => {
 
         return (
             <>
-                <ChartHeadCorner>Defense &gt;<br />Offense v</ChartHeadCorner>
+                {dual
+                    ? <ChartHeadCorner>Offense &gt;<br />Defense v</ChartHeadCorner>
+                    : <ChartHeadCorner>Defense &gt;<br />Offense v</ChartHeadCorner>
+                }
                 {allTypes.map((type, index) => (
                     <ChartDefenseHeaderCell key={index}>
                         <ChartHeader pokemonType={type.name}>{type.name.substring(0, 3)}</ChartHeader>
