@@ -4,7 +4,7 @@ import ReactPlaceholder from 'react-placeholder';
 import { getPokemon } from '../Services/pokemonService';
 import { getAllTypes, getType } from '../Services/typeService';
 import { getMove } from '../Services/moveService';
-import pokemonPlaceholder from '../Placeholders/Pokemon/pokemonPlaceholder';
+import pokemonPlaceholder from '../Placeholders/pokemonPlaceholder';
 
 export const PokemonContext = createContext();
 

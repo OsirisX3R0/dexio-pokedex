@@ -1,6 +1,6 @@
 import React from 'react';
 import { RectShape, TextRow, TextBlock, RoundShape } from 'react-placeholder/lib/placeholders';
-import { Container } from '../../Styles/Layout';
+import { Container } from '../Styles/Layout';
 import { 
     PokemonDetailHeader,
     PokemonDetailInfo, 
@@ -22,7 +22,7 @@ import {
     MoveTableTitle,
     MoveTableBody,
     MoveTableCell
-} from '../../Styles/Pokemon';
+} from '../Styles/Pokemon';
 
 const pokemonPlaceholder = (
     <Container>

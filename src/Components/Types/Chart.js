@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { TypeChartContext } from '../../Context/TypeChartContext';
 import ChartRow from './ChartRow';
-import { ChartHeadCorner, ChartDefenseHeader, ChartContainer } from '../../Styles/Types';
+import { ChartHeadCorner, ChartDefenseHeaderCell, ChartHeader, ChartContainer } from '../../Styles/Types';
 
 const Chart = () => {
     const { allTypes } = useContext(TypeChartContext);
@@ -14,7 +14,9 @@ const Chart = () => {
             <>
                 <ChartHeadCorner>Defense &gt;<br />Offense v</ChartHeadCorner>
                 {allTypes.map((type, index) => (
-                    <ChartDefenseHeader pokemonType={type.name} key={index}>{type.name.substring(0, 3)}</ChartDefenseHeader>
+                    <ChartDefenseHeaderCell key={index}>
+                        <ChartHeader pokemonType={type.name}>{type.name.substring(0, 3)}</ChartHeader>
+                    </ChartDefenseHeaderCell>
                 ))}
             </>
         )

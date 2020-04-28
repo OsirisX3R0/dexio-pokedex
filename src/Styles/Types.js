@@ -11,31 +11,37 @@ export const ChartContainer = styled.div`
     grid-gap: .5rem;
 `;
 
-const ChartHeader = styled.div`
+export const ChartContainerSmall = styled(ChartContainer)`
+    grid-template-columns: 60px repeat(7, 35px);
+`;
+
+const ChartHeaderCell = styled.div`
+    background-color: ${light};
+    text-transform: capitalize;
+    display: grid;
+    position: sticky;
+`;
+
+export const ChartHeader = styled.div`
     background-color: ${props => getTypeColor(props.pokemonType)};
     color: ${light};
     border-radius: 5px;
-    text-transform: capitalize;
-    position: sticky;
     display: grid;
     align-items: center;
     justify-content: center;
 `;
 
-export const ChartHeadCorner = styled.div`
-    background-color: ${light};
-    text-transform: capitalize;
-    position: sticky;
+export const ChartHeadCorner = styled(ChartHeaderCell)`
     top: 0;
     left: 0;
     z-index: 100;
 `;
 
-export const ChartDefenseHeader = styled(ChartHeader)`
+export const ChartDefenseHeaderCell = styled(ChartHeaderCell)`
     top: 0;
 `;
 
-export const ChartOffenseHeader = styled(ChartHeader)`
+export const ChartOffenseHeaderCell = styled(ChartHeaderCell)`
     left: 0;
 `;
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { getType } from '../../Services/typeService';
-import { ChartOffenseHeader, ChartCell } from '../../Styles/Types';
+import { ChartOffenseHeaderCell, ChartHeader, ChartCell } from '../../Styles/Types';
 import { TypeChartContext } from '../../Context/TypeChartContext';
 
 const ChartRow = ({ type }) => {
@@ -16,10 +16,18 @@ const ChartRow = ({ type }) => {
         return offenseType.damage_relations.double_damage_to.some(r => r.name === defenseType.name)
             ? 2
             : offenseType.damage_relations.half_damage_to.some(r => r.name === defenseType.name)
-                ? String.fromCharCode(189)
+                ? 0.5
                 : offenseType.damage_relations.no_damage_to.some(r => r.name === defenseType.name)
                     ? 0
                     : 1;
+    }
+
+    const displayValue = value => {
+        return value === 0.5
+            ? String.fromCharCode(189)
+            : value === 0.25
+                ? String.fromCharCode(188)
+                : value
     }
 
     const displayRow = () => {
@@ -28,10 +36,12 @@ const ChartRow = ({ type }) => {
 
         return (
             <>
-                <ChartOffenseHeader pokemonType={type.name}>{type.name}</ChartOffenseHeader>
+                <ChartOffenseHeaderCell>
+                    <ChartHeader pokemonType={type.name}>{type.name}</ChartHeader>
+                </ChartOffenseHeaderCell>
                 {allTypes.map((defenseType, index) => {
                     let value = getDamageValue(defenseType);
-                    return <ChartCell damageValue={value} key={index}>{value}</ChartCell>
+                    return <ChartCell damageValue={value} key={index}>{displayValue(value)}</ChartCell>
                 })}
             </>
         )
