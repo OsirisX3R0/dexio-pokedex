@@ -13,8 +13,8 @@ const Topbar = ({ history }) => {
                 <BackButton onClick={() => history.goBack()}>
                     <FontAwesomeIcon icon={faAngleLeft} />
                     <BackButtonText>{activePage}</BackButtonText>
-                </BackButton>                
-            </TopBarTitle>
+                </BackButton>
+\            </TopBarTitle>
         </TopBarContainer>
     )
 }

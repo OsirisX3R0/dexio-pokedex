@@ -34,7 +34,6 @@ export const ChartToggleSwitch = styled(Toggle)`
 `;
 
 export const ChartContainer = styled.div`
-    font-size: 0.85rem;
     overflow: scroll;
     display: grid;
     grid-template-columns: 60px repeat(18, 35px);
@@ -66,6 +65,7 @@ export const ChartHeaderFull = styled(ChartHeader)`
 `;
 
 export const ChartHeadCorner = styled(ChartHeaderCell)`
+    font-size: 0.85rem;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: .2rem;
     align-items: center;
