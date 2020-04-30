@@ -68,7 +68,7 @@ export const ChartHeaderFull = styled(ChartHeader)`
 
 export const ChartHeadCorner = styled(ChartHeaderCell)`
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: .2rem;
+    gap: 0 .2rem;
     align-items: center;
     top: 0;
     left: 0;
