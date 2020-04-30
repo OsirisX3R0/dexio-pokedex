@@ -14,7 +14,7 @@ const Topbar = ({ history }) => {
                     <FontAwesomeIcon icon={faAngleLeft} />
                     <BackButtonText>{activePage}</BackButtonText>
                 </BackButton>
-\            </TopBarTitle>
+            </TopBarTitle>
         </TopBarContainer>
     )
 }
