@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import { TopBarContainer, BackButton, TopBarTitle } from '../../Styles/Layout';
 import { GlobalContext } from '../../Context/GlobalContext';
 
@@ -8,7 +10,10 @@ const Topbar = ({ history }) => {
     return (
         <TopBarContainer>
             <TopBarTitle>
-                <BackButton onClick={() => history.goBack()}>&lt; {activePage}</BackButton>                
+                <BackButton onClick={() => history.goBack()}>
+                    <FontAwesomeIcon icon={faAngleLeft} />
+                    {activePage}
+                    </BackButton>                
             </TopBarTitle>
         </TopBarContainer>
     )

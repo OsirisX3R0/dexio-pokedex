@@ -24,7 +24,7 @@ const ChartRow = ({ type }) => {
     }, [offenseType, type, dual, secondType])
 
     const getDamageValue = defenseType => {
-        if ((!dual || !secondaryType) || (secondaryType && offenseType.name === secondaryType.name)) {
+        if ((!dual || !secondaryType)) {
             return offenseType.damage_relations.double_damage_to.some(r => r.name === defenseType.name)
                 ? 2
                 : offenseType.damage_relations.half_damage_to.some(r => r.name === defenseType.name)
@@ -34,29 +34,49 @@ const ChartRow = ({ type }) => {
                         : 1;
         }
 
+        if (secondaryType && offenseType.name === secondaryType.name) {
+            return offenseType.damage_relations.double_damage_from.some(r => r.name === defenseType.name)
+                ? 2
+                : offenseType.damage_relations.half_damage_from.some(r => r.name === defenseType.name)
+                    ? 0.5
+                    : offenseType.damage_relations.no_damage_from.some(r => r.name === defenseType.name)
+                        ? 0
+                        : 1;
+        }
+
         return (
-            offenseType.damage_relations.double_damage_to.some(r => r.name === defenseType.name) &&
-            secondaryType.damage_relations.double_damage_to.some(r => r.name === defenseType.name)
+            offenseType.damage_relations.double_damage_from.some(r => r.name === defenseType.name) &&
+            secondaryType.damage_relations.double_damage_from.some(r => r.name === defenseType.name)
         )
             ? 4
             : (
-                offenseType.damage_relations.double_damage_to.some(r => r.name === defenseType.name) ||
-                secondaryType.damage_relations.double_damage_to.some(r => r.name === defenseType.name)
+                (
+                    offenseType.damage_relations.double_damage_from.some(r => r.name === defenseType.name) ||
+                    secondaryType.damage_relations.double_damage_from.some(r => r.name === defenseType.name)
+                ) && !(
+                    offenseType.damage_relations.half_damage_from.some(r => r.name === defenseType.name) ||
+                    secondaryType.damage_relations.half_damage_from.some(r => r.name === defenseType.name) ||
+                    offenseType.damage_relations.no_damage_from.some(r => r.name === defenseType.name) ||
+                    secondaryType.damage_relations.no_damage_from.some(r => r.name === defenseType.name)
+                )
             )
                 ? 2
                 : (
-                    offenseType.damage_relations.half_damage_to.some(r => r.name === defenseType.name) &&
-                    secondaryType.damage_relations.half_damage_to.some(r => r.name === defenseType.name)
+                    offenseType.damage_relations.half_damage_from.some(r => r.name === defenseType.name) &&
+                    secondaryType.damage_relations.half_damage_from.some(r => r.name === defenseType.name)
                 )
                     ? 0.25
                     : (
-                        offenseType.damage_relations.half_damage_to.some(r => r.name === defenseType.name) ||
-                        secondaryType.damage_relations.half_damage_to.some(r => r.name === defenseType.name)
+                        offenseType.damage_relations.half_damage_from.some(r => r.name === defenseType.name) ||
+                        secondaryType.damage_relations.half_damage_from.some(r => r.name === defenseType.name)
+                    ) && !(
+                        offenseType.damage_relations.double_damage_from.some(r => r.name === defenseType.name) ||
+                        secondaryType.damage_relations.double_damage_from.some(r => r.name === defenseType.name)
                     )
                         ? 0.5
                         : (
-                            offenseType.damage_relations.no_damage_to.some(r => r.name === defenseType.name) ||
-                            secondaryType.damage_relations.no_damage_to.some(r => r.name === defenseType.name)
+                            offenseType.damage_relations.no_damage_from.some(r => r.name === defenseType.name) ||
+                            secondaryType.damage_relations.no_damage_from.some(r => r.name === defenseType.name)
                         )
                             ? 0
                             : 1

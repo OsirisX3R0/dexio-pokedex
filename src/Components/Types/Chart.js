@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { TypeChartContext } from '../../Context/TypeChartContext';
 import ChartRow from './ChartRow';
 import { ChartHeadCorner, ChartDefenseHeaderCell, ChartHeader, ChartContainer } from '../../Styles/Types';
@@ -13,8 +15,14 @@ const Chart = () => {
         return (
             <>
                 {dual
-                    ? <ChartHeadCorner>Offense &gt;<br />Defense v</ChartHeadCorner>
-                    : <ChartHeadCorner>Defense &gt;<br />Offense v</ChartHeadCorner>
+                    ? <ChartHeadCorner>
+                        Offense <FontAwesomeIcon icon={faAngleRight} size="sm" />
+                        Defense <FontAwesomeIcon icon={faAngleDown} size="sm" />
+                    </ChartHeadCorner>
+                    : <ChartHeadCorner>
+                        Defense <FontAwesomeIcon icon={faAngleRight} size="sm" />
+                        Offense <FontAwesomeIcon icon={faAngleDown} size="sm" />
+                    </ChartHeadCorner>
                 }
                 {allTypes.map((type, index) => (
                     <ChartDefenseHeaderCell key={index}>
