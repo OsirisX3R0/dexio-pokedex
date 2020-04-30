@@ -15,6 +15,10 @@ export const BackButton = styled.button`
     font-weight:500;
 `;
 
+export const BackButtonText = styled.span`
+    margin-left: .2rem;
+`;
+
 export const TopBarTitle = styled.h3`
     color: ${light};
 `;
