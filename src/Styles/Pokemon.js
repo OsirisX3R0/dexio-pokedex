@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { gray, dark, light, border } from './Variables';
 import { getTypeColor, getStatColor, getStatBorderColor, getClassBackgroundColor, getClassTextColor } from '../Util/colorHelpers';
 import { DetailName } from './General';
+import { Link } from 'react-router-dom';
 
 export const PokemonInfo = styled.div``;
 
@@ -169,6 +170,15 @@ export const MoveTableName = styled(MoveTableCell)`
             : 'normal'
     )};
     text-align: left;
+`;
+
+export const MoveTableLink = styled(Link)`
+    color: ${dark};
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
 `;
 
 export const MoveTableType = styled(MoveTableCell)`

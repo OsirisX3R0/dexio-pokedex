@@ -5,6 +5,7 @@ import {
     MoveTableRow, 
     MoveTableCell,
     MoveTableName, 
+    MoveTableLink,
     MoveTableType, 
     MoveTableClass, 
 } from '../../Styles/Pokemon';
@@ -27,7 +28,9 @@ const PokemonMove = ({ types, moveInfo }) => {
         return (
             <MoveTableRow>
                 <MoveTableCell>{details.level_learned_at}</MoveTableCell>
-                <MoveTableName types={types} type={move.type.name} typeClass={move.damage_class.name}>{formatName(moveInfo.move.name)}</MoveTableName>
+                <MoveTableName types={types} type={move.type.name} typeClass={move.damage_class.name}>
+                    <MoveTableLink to={"/move/" + moveInfo.move.name}>{formatName(moveInfo.move.name)}</MoveTableLink>
+                </MoveTableName>
                 <MoveTableType type={move.type.name}>{move.type.name}</MoveTableType>
                 <MoveTableClass typeClass={move.damage_class.name}>{move.damage_class.name}</MoveTableClass>
                 <MoveTableCell>{move.power}</MoveTableCell>
