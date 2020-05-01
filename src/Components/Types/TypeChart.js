@@ -13,9 +13,9 @@ const TypeChart = ({ history }) => {
         <TypeChartProvider>
             <Layout history={history}>
                 <Container>
-                    <ChartToggle />
                     <Chart />
                 </Container>
+                <ChartToggle />
             </Layout>
         </TypeChartProvider>
     )

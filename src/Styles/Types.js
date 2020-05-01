@@ -7,14 +7,14 @@ import { Toggle } from './General';
 export const ChartToggleContainer = styled.div`
     height: 43px;
     background-color: ${light};
-    border-bottom: ${border};
-    margin-bottom: .5rem;
-    padding: .5rem 0;
+    border-top: ${border};
+    margin-top: .5rem;
+    padding: .5rem 1rem;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     position: sticky;
-    top: 0;
+    bottom: 0;
     z-index: 1000;
 `;
 
@@ -36,7 +36,7 @@ export const ChartToggleSwitch = styled(Toggle)`
 export const ChartContainer = styled.div`
     height: 100vh;
     font-size: 0.85rem;
-    overflow: scroll;
+    // overflow-y: hidden;
     display: grid;
     grid-template-columns: 60px repeat(18, 35px);
     grid-gap: .5rem;
@@ -70,19 +70,19 @@ export const ChartHeadCorner = styled(ChartHeaderCell)`
     grid-template-columns: repeat(2, 1fr);
     gap: 0 .2rem;
     align-items: center;
-    top: 0;
-    left: 0;
+    top: 3rem;
+    left: 1rem;
     z-index: 100;
 `;
 
 export const ChartDefenseHeaderCell = styled(ChartHeaderCell)`
-    top: 0;
+    top: 3rem;
 `;
 
 export const ChartOffenseHeaderCell = styled(ChartHeaderCell)`
     grid-template-columns: repeat(2, 50%);
     grid-gap: .1rem;
-    left: 0;
+    left: 1rem;
 `;
 
 export const ChartCell = styled.div`

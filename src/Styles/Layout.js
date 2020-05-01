@@ -5,6 +5,9 @@ export const TopBarContainer = styled.header`
     width: 100%;
     background-color: ${primaryRed};
     padding: .55rem;
+    position: fixed;
+    top: 0;
+    z-index: 100000;
 `;
 
 export const BackButton = styled.button`

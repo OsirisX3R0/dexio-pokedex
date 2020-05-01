@@ -16,7 +16,7 @@ const GlobalStyles = createGlobalStyle`
         background-color: #f5f5f5;
         color: #333;
         // overflow: hidden;
-        -webkit-overflow-scrolling: touch;
+        // -webkit-overflow-scrolling: touch;
     }
 `;
 
